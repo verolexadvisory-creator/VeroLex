@@ -2,9 +2,9 @@
 
 | | |
 |---|---|
-| Sana | 2026-yil 1-oktabr, 13:45–14:45 Asia/Tashkent |
+| Sana | 2026-yil 1-oktabr, 13:45–14:45 Asia/Tashkent; sayt arxivi tekshiruvi 17:55–18:40 |
 | Obyekt | https://verolex.uz (UZ / RU / EN) |
-| Manbalar | `Vero Lex(Draft)_website.docx` (TZ qoralamasi), `Кп-seo-verolex-uz.pdf` (SEO taklifi, 5 bet), buyurtmachining 2026-10-01 13:12 dagi qo'shimcha talablari, dastlabki audit (2026-10-01) |
+| Manbalar | `Vero Lex(Draft)_website.docx` (TZ qoralamasi), `Кп-seo-verolex-uz.pdf` (SEO taklifi, 5 bet), buyurtmachining 2026-10-01 13:12 dagi qo'shimcha talablari, dastlabki audit (2026-10-01), sayt arxivi `verolex-sayt_8_1.zip` (fayllar sanasi 2026-08-10) |
 | Hujjatlar to'plami | Ushbu fayl; `VEROLEX_REQUIREMENTS_MATRIX.csv`; `VEROLEX_BACKLOG.md`; `VEROLEX_TEST_RESULTS.md`; `VEROLEX_REDESIGN_TZ.md`; `VEROLEX_CONTENT_CHECKLIST.md`; dalillar `audit/evidence/` papkasida |
 
 ---
@@ -40,6 +40,13 @@
    - Qamrov faqat RU tili va O'zbekiston.
    - 24 mln so'm faqat SEO xizmati uchun. Sayt va texnik tuzatishlar bu summaga kirmaydi; texnik tuzatishlarni buyurtmachi bajaradi.
 9. **Muhim cheklov.** Bu muhitning tarmoq siyosati `verolex.uz` ga ulanishni blokladi (T-04, T-05). Shuning uchun dastlabki audit kuzatuvlarini jonli saytda qayta tekshira olmadim. Ular matritsada “D2” deb belgilangan. Jonli tekshiruv uchun skriptlar tayyor va lokal fixture'da sinovdan o'tgan (17/17, T-09). Domenga ruxsat berilgach, ularni bir buyruq bilan ishga tushirish mumkin.
+10. **Sayt arxivi tekshiruvi (D1L).** Yuborilgan arxiv lokal serverda to'liq tekshirildi (`audit/evidence/08_local_copy/`):
+    - **Arxivda admin panel yoki CMS yo'q.** Sayt statik HTML va `i18n.js` dan iborat, forma uchun PHP ishlatiladi. Matnlar kodni qo'lda tahrirlash orqali o'zgartiriladi. Demak, DOCX'dagi admin talablari bajarilmagan va “mavjud panelni kengaytirish” varianti qo'llanmaydi.
+    - **Texnik SEO asosi yaxshi.** 39 URL; noyob metadata; canonical, hreflang, JSON-LD va Open Graph to'g'ri.
+    - **Indeksdagi `/ru/` va `/ru/index.html` dublikatining sababi topildi.** Menyu `index.html` ga olib boradi, uni asosiy manzilga yo'naltiruvchi 301 esa yo'q.
+    - **Server forma ma'lumotlarini tekshiradi.** `send.php` da validatsiya, honeypot va daqiqasiga 5 ta so'rov chegarasi bor.
+    - **Arxiv production'dan farq qiladi.** Arxivdagi GA4 sharti to'g'ri, email esa hamma joyda bitta. Demak, production'dagi GA4 xatosi va ikki xil email keyingi qo'lda kiritilgan o'zgarishlardan kelib chiqqan.
+    - **Xavfsizlik bo'yicha shoshilinch ish (P1, B-29):** arxivda haqiqiy Telegram tokeni bor `.env` fayli bor. Fayl izohiga ko'ra token avval skrinshotda ochiq ko'ringan. Tokenni almashtirish kerak. `diagnostika.php` parolsiz turibdi, uni serverdan o'chirish kerak.
 
 ## 2. Qamrov, usul va cheklovlar
 
@@ -78,15 +85,17 @@ Matritsadagi har qatorda dalil darajasi ko'rsatilgan.
 
 ## 3. Natijalar statistikasi
 
-Talablar reyestri: **141 qator** (`VEROLEX_REQUIREMENTS_MATRIX.csv`).
+Talablar reyestri: **144 qator** (arxiv tekshiruvidan keyin REC-017–REC-019 qo'shildi) (`VEROLEX_REQUIREMENTS_MATRIX.csv`).
 
 | Guruh | Jami | BAJARILGAN | QISMAN | BAJARILMAGAN | TEKSHIRILMADI |
 |---|---|---|---|---|---|
-| TZ (DOCX) | 69 | 5 | 19 | 15 | 30 |
-| SEO (PDF) | 26 | 1 | 2 | 1 | 22 |
-| NEW (buyurtmachi, 2026-10-01) | 30 | 0 | 3 | 26 | 1 |
-| REC (qo'shimcha tavsiyalar) | 16 | 0 | 0 | 2 | 14 |
-| **Jami** | **141** | **6** | **24** | **44** | **67** |
+| TZ (DOCX) | 69 | 8 | 19 | 24 | 18 |
+| SEO (PDF) | 26 | 4 | 3 | 3 | 16 |
+| NEW (buyurtmachi, 2026-10-01) | 30 | 0 | 4 | 25 | 1 |
+| REC (qo'shimcha tavsiyalar) | 19 | 0 | 0 | 6 | 13 |
+| **Jami** | **144** | **12** | **26** | **58** | **48** |
+
+Arxiv tekshiruvidan oldin statistika bunday edi: 141 qator; 6 bajarilgan, 24 qisman, 44 bajarilmagan, 67 tekshirilmagan. Tekshirilmaganlar soni asosan admin panel bandlari hisobiga kamaydi: ular endi “BAJARILMAGAN” (arxivda admin yo'q). D1L dalili arxivga tegishli. Production bilan farqi bo'lgan joylarda (GA4, email) D2 kuzatuvi ustun turadi.
 
 **Statistikani o'qish:**
 - “TEKSHIRILMADI” muvaffaqiyatsiz degani emas. Ularning asosiy qismi admin panel, server, hisoblar va jonli sayt kirishiga bog'liq.
@@ -245,7 +254,8 @@ Quyidagilar ishlaydi:
 Bularni saqlab, bosqichma-bosqich yaxshilash kerak. Butun saytni qaytadan yozish zarurligi dalillar bilan isbotlanmagan. Bu xulosa dastlabki audit kuzatuvlariga tayanadi va tarmoq ochilgach qayta tasdiqlanadi.
 
 **2. Birinchi navbatda qaysi ishlarni bajarish kerak?**
-1. Kirishlar, kod va admin demo (B-09). Shundan keyin arxitektura qarori qabul qilinadi.
+1. **Telegram tokenini almashtirish va `diagnostika.php` ni o'chirish (B-29)** — bu bugunoq qilinadi.
+1. Kirishlar va kod (B-09). Arxivda admin yo'qligi aniqlandi, shuning uchun arxitektura qarori — B varianti.
 2. GA4 shartini tuzatish va hodisalarni tasdiqlash (B-01).
 3. Bitta rasmiy emailni tanlash va hamma joyda bir xil qilish (B-02).
 4. Arizalar yetib borishini test kanalida tekshirish (B-03).
@@ -281,7 +291,7 @@ Backend yoki CMS bo'yicha qaror B-09 natijasiga bog'liq. Variantlar:
 
 | Variant | Qachon to'g'ri | Afzallik | Xavf |
 |---|---|---|---|
-| **A. Mavjud admin panelni kengaytirish** | Admin bor va 3 tilli mustaqil nashr, SEO maydonlari, media hamda rollarni qo'llaydi; kod VeroLex'ga topshiriladi | Eng arzon; DOCX talabiga mos; URLlar o'zgarmaydi | Kod sifati past bo'lsa, texnik qarz to'planadi |
+| **A. Mavjud admin panelni kengaytirish** | Admin bor va 3 tilli mustaqil nashr, SEO maydonlari, media hamda rollarni qo'llaydi; kod VeroLex'ga topshiriladi. **Arxiv tekshiruvi (D1L): arxivda admin yo'q — bu variant faqat pudratchi production'da alohida admin borligini ko'rsatsa ko'rib chiqiladi** | Eng arzon; DOCX talabiga mos; URLlar o'zgarmaydi | Kod sifati past bo'lsa, texnik qarz to'planadi |
 | **B. Yangi individual backend va admin modul** (jamoa, hamkorlar, vakansiyalar, materiallar uchun umumiy model); mavjud sahifalar shablonlarga ko'chiriladi | Admin yo'q, cheklangan yoki kod berilmaydi | DOCX §8 ga mos (“без готовых CMS”); REDESIGN_TZ §10dagi modellar to'g'ridan-to'g'ri amalga oshadi | Ko'proq ish; URLlar va metadata ko'chirilishini qat'iy nazorat qilish kerak |
 | **C. Tayyor CMS (WordPress va boshqalar)** | Faqat VeroLex DOCX'dagi “tayyor CMSsiz” talabini rasman o'zgartirsa | SEO plaginlari va tayyor admin | DOCX'ga zid; 39 URL va 3 tilli hreflang'ni ko'chirish xavfi; plaginlarga bog'liqlik |
 
@@ -294,6 +304,8 @@ Qaror mezonlari:
 6. Kod topshirilganmi va hujjatlashtirilganmi?
 
 Agar 1–4 va 6 bajarilsa — A varianti, aks holda — B varianti. C varianti faqat TZ rasman o'zgartirilsa.
+
+**Arxiv tekshiruvidan keyingi tavsiya: B varianti.** Mavjud statik sahifalar, ularning URL, metadata va JSON-LD qismlari yangi shablonlarga ko'chiriladi. Kontent (39 sahifa matni va `i18n.js`) ma'lumotlar bazasiga import qilinadi. Shunda dizayn, Jamoa, Hamkorlar va Vakansiyalar bitta individual admin orqali boshqariladi. Bu yo'l DOCX talabiga ham, PDF'dagi “kontentni CMS orqali boshqarish” ehtiyojiga ham javob beradi.
 
 ## 11. Manbalar
 

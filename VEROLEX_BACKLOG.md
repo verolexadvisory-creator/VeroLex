@@ -21,7 +21,7 @@ Sana: 2026-10-01, Asia/Tashkent. Har bandda talab ID'lari ko'rsatilgan (`VEROLEX
 
 ## P0
 
-Tasdiqlangan P0 yo'q. Quyidagi holatlardan biri aniqlansa, tegishli band darhol P0 ga ko'tariladi:
+Tasdiqlangan P0 yo'q. Arxiv tekshiruvi (B-29) shuni ko'rsatdi: production'da `diagnostika.php` qolgan bo'lsa yoki `.env` web orqali ochilsa, bu holat P0 ga ko'tariladi. Quyidagi holatlardan biri aniqlansa, tegishli band darhol P0 ga ko'tariladi:
 - B-03 tekshiruvida arizalar umuman yetib bormasa;
 - kod tekshiruvida (B-19) SQL injection yoki XSS tasdiqlansa;
 - CV yoki ariza ma'lumotlari ochiq URLda topilsa.
@@ -45,6 +45,7 @@ Tasdiqlangan P0 yo'q. Quyidagi holatlardan biri aniqlansa, tegishli band darhol 
 - **Mas'ul:** Dasturchi; tekshiradi — SEO.
 - **Qabul mezoni:** DebugView'da `page_view` va test `generate_lead` (stagingda) ko'rinadi; network payloadda PII yo'q.
 - **Qayta test:** L-19, T-08.
+- **Arxiv tekshiruvi (D1L, 2026-10-01):** 2026-08-10 dagi arxivda shart to'g'ri yozilgan: `indexOf("G-") === 0 && indexOf("X") === -1`. Real ID `G-N4Z7XF5GGK` ham shu shartdan o'tadi. Eng oddiy tuzatish — shu shartni qaytarish, `GA4_ID` ga real ID yozish va `?v=8` ni `?v=9` ga oshirish.
 
 ### B-02. Rasmiy emailni tanlash va hamma joyda birxillashtirish
 - **Talablar:** TZ-020, TZ-056, TZ-002.
@@ -153,6 +154,7 @@ Tasdiqlangan P0 yo'q. Quyidagi holatlardan biri aniqlansa, tegishli band darhol 
 - **Mas'ul:** Dasturchi; tekshiradi — SEO.
 - **Qabul mezoni:** L-03: barcha variantlar 1 qadamda kanonik URLga 301; L-05 xatosiz; www va wwwsiz versiyalarda 502 yo'q.
 - **Qayta test:** L-03, L-05, L-01; GSC URL Inspection.
+- **Sabab topildi (D1L):** canonical va hreflang `/`, `/ru/`, `/en/` ga ishora qiladi, lekin menyu, logo va `main.js` dagi til almashtirish `index.html` ga olib boradi. `.htaccess` da `index.html` uchun 301 yo'q. Tuzatish: ichki havolalarni `./` (yoki `/ru/`) ga o'zgartirish, `main.js` da `index.html` o'rniga katalog URL ishlatish, `.htaccess` ga `RewriteRule ^(ru/|en/)?index\.html$ /$1 [R=301,L]` qo'shish. www va HTTPS qoidalari arxivdagi `.htaccess` da bor, shuning uchun production server konfiguratsiyasi tekshiriladi.
 
 ### B-09. Kirishlar, manba kodi va arxitektura qarori uchun materiallar
 - **Talablar:** TZ-026, TZ-045, TZ-063, TZ-005, TZ-036, SEO-002, SEO-007, REC-012, NEW-029.
@@ -172,6 +174,10 @@ Tasdiqlangan P0 yo'q. Quyidagi holatlardan biri aniqlansa, tegishli band darhol 
 - **Mas'ul:** VeroLex rahbariyati.
 - **Qabul mezoni:** VEROLEX_AUDIT.md §9dagi kirishlar ro'yxati “berildi” holatida.
 - **Qayta test:** L-24, L-25, L-26, L-27.
+- **Arxiv tekshiruvi (D1L):**
+  - Yuklangan arxivda admin panel yoki CMS **yo'q**. Sayt statik HTML va `i18n.js` dan iborat, forma uchun `send.php` ishlatiladi. Matnni o'zgartirish uchun HTML va `i18n.js` ni qo'lda tahrirlash kerak (README §6).
+  - Shuning uchun REDESIGN_TZ'dagi A varianti (“mavjud admin panelni kengaytirish”) qo'llanmaydi. Tanlov B varianti (individual backend va admin) yoki C varianti (faqat TZ rasman o'zgartirilsa) o'rtasida.
+  - Production'da arxivda yo'q admin panel mavjud emasligini pudratchidan yozma tasdiqlatish kerak.
 
 ### B-10. Google Ads konversiya yo'lini aniqlash
 - **Talablar:** REC-002.
@@ -213,6 +219,24 @@ Tasdiqlangan P0 yo'q. Quyidagi holatlardan biri aniqlansa, tegishli band darhol 
 - **Mas'ul:** VeroLex rahbariyati; SEO.
 - **Qabul mezoni:** shartnoma ilovasida yuqoridagi bandlarning har biri bor.
 
+### B-29. Maxfiy sozlamalar xavfsizligi (arxiv tekshiruvi)
+- **Talablar:** REC-017, TZ-049.
+- **Muammo va dalil (D1L):**
+  - Audit uchun yuborilgan arxivda haqiqiy `.env` fayli bor: Telegram bot tokeni, chat ID va webhook. Faylning o'zidagi izohga ko'ra, token avval skrinshotda ochiq ko'ringan.
+  - `diagnostika.php` web root'da parolsiz turibdi. `?run=1&send=1` orqali istalgan odam bot nomidan sinov xabarlarini yubora oladi. Sahifa token uzunligi va oxirgi 3 belgisini ham ko'rsatadi.
+  - `robots.txt` bu yo'llarni sanab o'tadi.
+- **Ta'siri:** token qo'lga tushsa, bot nomidan xabar yuborish va kelgan arizalarni (shaxsiy ma'lumotlarni) o'qish mumkin bo'ladi. Diagnostika sahifasi esa spam yuborish uchun ishlatilishi mumkin.
+- **O'zgarish:**
+  1. BotFather → `/mybots` → Revoke token, yangi tokenni faqat serverdagi `.env` ga yozish.
+  2. `diagnostika.php` ni serverdan o'chirish.
+  3. `.env` ni `public_html` dan tashqariga ko'chirish.
+  4. `robots.txt` dan maxfiy yo'llarni olib tashlash. Ular `.htaccess` orqali yopiladi.
+  5. Arxivlarni `.env` siz yuborish va eski nusxalarni o'chirish.
+- **Saqlanadigan xulq:** forma Telegramga ariza yuborishda davom etadi.
+- **Mas'ul:** VeroLex (token); Dasturchi.
+- **Qabul mezoni:** eski token ishlamaydi; `https://verolex.uz/.env` 403/404 qaytaradi; `https://verolex.uz/diagnostika.php?run=1` 404 qaytaradi; test ariza staging yoki test kanalga keladi.
+- **Qayta test:** L-27 va jonli HTTP tekshiruvi (tarmoq ruxsati kerak).
+
 ---
 
 ## P2
@@ -220,7 +244,7 @@ Tasdiqlangan P0 yo'q. Quyidagi holatlardan biri aniqlansa, tegishli band darhol 
 | ID | Talablar | Muammo va dalil | O'zgarish | Saqlanadi | Bog'liqlik | Mas'ul | Qabul mezoni / qayta test |
 |---|---|---|---|---|---|---|---|
 | B-13 | TZ-002 | D2: RU/EN'da o'zbekcha aria/alt (“Til tanlash”, “Adolat tarozisi”) | Barcha yordamchi matnlarni 3 tilli lug'atga chiqarish; dekorativ rasmga `alt=""` | Mavjud tarjimalar | — | Dasturchi; VeroLex | L-18: RU/EN'da o'zbekcha marker 0 |
-| B-14 | REC-004 | D2: FAQ'da `aria-expanded` yo'q | `<button aria-expanded aria-controls>` yoki `<details>`; Enter va Space | FAQPage schema, savol matnlari, URL | — | Dasturchi | L-14 PASS |
+| B-14 | REC-004 | D2: FAQ'da `aria-expanded` yo'q; D1L: mobil `#burger` tugmasida ham yo'q | `<button aria-expanded aria-controls>` yoki `<details>`; Enter va Space | FAQPage schema, savol matnlari, URL | — | Dasturchi | L-14 PASS |
 | B-15 | REC-007, REC-008, NEW-016 | D2, D3: “2020-yildan”, “10+ yil”, “24/7”, “100% onlayn”, “bepul”, “yetakchi” | Har da'voni tasdiqlash yoki o'zgartirish; FAQ'ga muallif yurist, sana va lex.uz havolasi | Tasdiqlangan da'volar | Yurist | VeroLex; Yurist | Da'volar ro'yxati imzolangan; har FAQ'da sana |
 | B-16 | REC-009, SEO-017 | D3: Yandex Xaritalarda “Веро Лекс — больше не работает” | Kartochka egasini aniqlash; o'z kartochkalarini (Yandex, Google, 2GIS) tasdiqlash; NAP sayt bilan bir xil | — | B-02 | VeroLex; SEO | Har platformada 1 ta tasdiqlangan kartochka |
 | B-17 | SEO-023 | D0: OG holati noma'lum | og:title, og:description, og:image (1200×630), og:url, og:locale (uz_UZ, ru_RU, en_US) | Title va description | — | Dasturchi; SEO | L-28 PASS |
@@ -231,7 +255,9 @@ Tasdiqlangan P0 yo'q. Quyidagi holatlardan biri aniqlansa, tegishli band darhol 
 | B-22 | TZ-041 | D1: logo PDF'da bor, brendbuk berilmagan | Logo SVG, ranglar va mavjud brendbukni berish | Logotip | — | VeroLex | Fayllar dizaynerda |
 | B-23 | TZ-061, TZ-062 | D0: tarjima va nashr mas'uli yo'q | Har til uchun mas'ul va tasdiqlovchi; 3 oylik kontent kalendari | — | — | VeroLex | Mas'ullar va kalendar yozma |
 | B-24 | TZ-027, TZ-035, TZ-037–TZ-040 | D0: admin funksiyalari ko'rilmagan | Demo orqali tekshirish; yetishmagan funksiyalar M-02ga | — | B-09 | Dasturchi; VeroLex | L-24 ro'yxatining har bandi PASS yoki M-02 ga kiritilgan |
-| B-25 | TZ-054, TZ-055, TZ-056, SEO-004, SEO-015 | D2: fayllar bor; canonical bilan mosligi, robots qoidalari, JSON-LD NAP va heading tartibi tekshirilmagan | L-01, L-02, L-06, L-09 natijalari bo'yicha tuzatish | Mavjud schema turlari | B-02, B-08 | Dasturchi; SEO | Sitemap = canonical; JSON-LD xatosiz; heading daraja tashlab ketmaydi |
+| B-25 | TZ-054, TZ-055, TZ-056, SEO-004, SEO-015 | D2: fayllar bor. D1L: sitemap, robots va JSON-LD to'g'ri; 39 sahifada `h2→h4`, aloqa sahifalarida `h1→h3` | L-01, L-02, L-06, L-09 natijalari bo'yicha tuzatish | Mavjud schema turlari | B-02, B-08 | Dasturchi; SEO | Sitemap = canonical; JSON-LD xatosiz; heading daraja tashlab ketmaydi |
+
+| B-30 | REC-018, NEW-006 | D1L: bosh sahifalarda har tashrifda kontentni 2,9 s yopuvchi intro | Introni olib tashlash (yoki sessiyada bir marta va ≤1 s) | reduced-motion qo'llovi | — | Dasturchi | Bosh sahifa kontenti darhol ko'rinadi; LCP o'lchovi yaxshilangan |
 
 ## P3
 
@@ -239,6 +265,7 @@ Tasdiqlangan P0 yo'q. Quyidagi holatlardan biri aniqlansa, tegishli band darhol 
 |---|---|---|---|
 | B-26 | TZ-021, TZ-022 | Xarita iframe'iga title va lazy; matnli fallback; ijtimoiy havolalarga `rel=noopener`; LinkedIn bor-yo'qligini aniqlash | Dasturchi; VeroLex |
 | B-27 | TZ-006, TZ-034, SEO-006, TZ-010, SEO-005 | Ixtiyoriy: avtomatik til taklifi, ko'rishlar statistikasi, meta keywords maydoni, reytinglar bloki (faqat tasdiqlangan bo'lsa), 400 belgili matn talabi (sifat birinchi o'rinda) | VeroLex qaroriga ko'ra |
+| B-31 | REC-019 | 3 tilda alohida 404 sahifasi; `ErrorDocument` shu sahifaga | Dasturchi |
 | B-28 | TZ-069, TZ-047, TZ-065, TZ-066 | Rekvizitlarni footerga chiqarish (tasdiqlansa); domen egaligi va muddati; kafolat va SLA | VeroLex |
 
 ---
@@ -267,7 +294,7 @@ Har modul `VEROLEX_REDESIGN_TZ.md`dagi spetsifikatsiyaga asoslanadi. Qabul testl
 
 | Reliz | Mazmuni | Bandlar | Chiqish sharti |
 |---|---|---|---|
-| **Reliz-1** — kirishlar, qarorlar va tezkor tuzatishlar (joriy saytda) | Kirishlar va kod; email qarori; spam, cookie va SEO shartnomasi qarorlari; kontent yig'ish boshlanadi; joriy saytdagi P1 tuzatishlar | B-09, B-12, M-11 (start), B-02, B-01, B-04, B-05, B-06, B-07, B-08, B-10, B-11, B-03 (staging bo'lgach), B-13, B-14 | P1 bandlar qabul mezoni bajarilgan; L-01–L-19 qayta o'tkazilgan |
+| **Reliz-1** — kirishlar, qarorlar va tezkor tuzatishlar (joriy saytda) | **Birinchi navbatda B-29 (token va diagnostika)**; kirishlar va kod; email qarori; spam, cookie va SEO shartnomasi qarorlari; kontent yig'ish boshlanadi; joriy saytdagi P1 tuzatishlar | B-29, B-09, B-12, M-11 (start), B-02, B-01, B-04, B-05, B-06, B-07, B-08, B-10, B-11, B-03 (staging bo'lgach), B-13, B-14 | P1 bandlar qabul mezoni bajarilgan; L-01–L-19 qayta o'tkazilgan |
 | **Reliz-2** — dizayn | Dizayn tizimi, menyu, shablonlar; arxitektura qarori; URL saqlash rejasi | M-01, M-02 (dizayn hujjati), NEW-008 | Maketlar tasdiqlangan; 301 rejasi (kerak bo'lsa) |
 | **Reliz-3** — yangi bo'limlar (buyurtmachi talabi) | Kompaniya, Jamoa, Hamkorlar, Vakansiyalar; yangi dizaynni barcha mavjud sahifalarga qo'llash | M-02, M-03, M-04, M-05, M-06 | Q-01–Q-20 PASS; NEW-008 inventar farqi toza |
 | **Reliz-4** | Yangiliklar va Legal Alerts, keyslar, obuna | M-07, M-08, M-10 | Tegishli testlar PASS |

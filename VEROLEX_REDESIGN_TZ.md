@@ -18,9 +18,9 @@ Versiya: 1.0 (2026-10-01, Asia/Tashkent). Holati: kelishish uchun loyiha.
 | Menyu | Jamoa, Hamkorlar va Vakansiyalar yo'q (D2) | §7dagi 7 bandli menyu |
 | URL | UZ ildizda, `/ru/`, `/en/`; `.html` (D2). www va wwwsiz hamda `/index.html` aliaslari indeksda (D3) | Sxema saqlanadi; aliaslar 301 bilan birlashtiriladi (B-08) |
 | SEO | Noyob title va description, 1 ta H1, canonical, hreflang, JSON-LD (D2) | Hammasi saqlanadi; yangi sahifalarga ham shu standart |
-| Forma | Labelsiz, faqat bo'sh maydon tekshiruvi, honeypot (D2) | §6.5 forma standarti |
+| Forma | Label'lar inputga bog'lanmagan; brauzer faqat bo'sh maydonni tekshiradi; serverda validatsiya, honeypot va rate limit bor (D2, D1L) | §6.5 forma standarti |
 | Dizayn | Buyurtmachi bahosiga ko'ra jiddiy yuridik konsaltingga yetarli mos emas | §1–§6 dizayn tizimi |
-| Admin | Ko'rilmagan (D0) | §10dagi modellar mavjud panelga qo'shiladi yoki B-09 qaroriga ko'ra yangi backend |
+| Admin | Sayt arxivida admin yoki CMS yo'q: statik HTML, `i18n.js` va `send.php` (D1L) | §10dagi modellar uchun yangi individual backend va admin (AUDIT §10, 5-savol, B varianti) |
 
 ---
 

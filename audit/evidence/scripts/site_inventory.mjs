@@ -92,7 +92,15 @@ const EXTRACT = () => {
       return { ok: true, types, emails: [...new Set(emails)] };
     } catch (e) { return { ok: false, error: String(e).slice(0, 120) }; }
   });
-  const bodyText = document.body ? document.body.innerText || document.body.textContent || '' : '';
+  // Matn tugunlarini bo'shliq bilan qo'shamiz: aks holda qo'shni so'z emailga yopishib qoladi
+  const bodyText = (() => {
+    if (!document.body) return '';
+    // filtr callback'i JSsiz kontekstda ishlamaydi, shuning uchun tekshiruv tsikl ichida
+    const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const parts = [];
+    while (w.nextNode()) if (!/^(SCRIPT|STYLE|NOSCRIPT|TEMPLATE)$/.test(w.currentNode.parentElement?.tagName || '')) parts.push(w.currentNode.nodeValue);
+    return parts.join(' ');
+  })();
   const textEmails = bodyText.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi) || [];
   const hrefs = qa('a[href]').map((a) => a.getAttribute('href'));
   return {

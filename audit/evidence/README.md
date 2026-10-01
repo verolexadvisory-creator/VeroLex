@@ -14,6 +14,7 @@ Bu papkada 2026-10-01 auditining dalil fayllari va qayta ishga tushiriladigan te
 | `05_contrast.json` | Taklif etilgan palitraning WCAG kontrast hisobi (26 juftlik) | T-07 |
 | `06_ga4_condition_repro.txt` | GA4 yoqilish sharti mantiqining reproduksiyasi (production fayli emas) | T-08 |
 | `07_selftest_fixture.txt` | Skriptlarning sun'iy fixture saytdagi o'z testi: 17/17 PASS | T-09 |
+| `08_local_copy/` | Foydalanuvchi bergan sayt arxivini (2026-08-10) lokal serverda tekshirish natijalari: inventar, UI va forma testlari, `send.php` sinovi, skrinshotlar. `.env` qiymatlari kiritilmagan | LC-01–LC-22 |
 | `live/` | (hali yo'q) Jonli sayt tekshiruvi natijalari — tarmoq ochilgach yaratiladi | L-01–L-28 |
 
 ## Skriptlar (`scripts/`)

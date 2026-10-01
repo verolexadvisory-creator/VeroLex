@@ -1,0 +1,25 @@
+send.php — lokal sinov (PHP 8 built-in server, 127.0.0.1:8091)
+Vaqt: 2026-10-01 ~18:20 Asia/Tashkent
+Sharoit: arxivdagi send.php nusxasi alohida papkada; .env YO'Q (token berilmagan),
+shuning uchun hech bir so'rov api.telegram.org ga yuborilmagan.
+
+So'rov (POST JSON)                                         Javob                                   HTTP
+GET /send.php                                              {"success":false,"error":"method"}      405
+name="A", phone="+998901234567"                            {"success":false,"error":"validation"}  200
+name="Test", phone="abc"                                   {"success":false,"error":"validation"}  200
+name="Test", phone="123456" (6 raqam)                      {"success":false,"error":"validation"}  200
+name="Test", phone ok, email="test@"                       {"success":false,"error":"validation"}  200
+honeypot website="http://spam"                            {"success":true}  (jimgina rad etiladi)  200
+name="Test", phone ok (to'g'ri ma'lumot, token yo'q)       {"success":false,"error":"config"}      200
+name="<b>X</b>" (strip_tags dan keyin 1 belgi)             {"success":false,"error":"validation"}  200
+Bir daqiqada 7 ta to'g'ri so'rov                           1–5: config; 6–7: {"error":"rate"}      429
+
+Xulosa:
+- Server validatsiyasi bor: ism >= 2 belgi, telefonda >= 7 raqam, email formati (ixtiyoriy maydon).
+- Honeypot server tomonda tekshiriladi; rate limit: IP bo'yicha daqiqasiga 5 ta (to'g'ri) murojaat.
+- HTML teglar olib tashlanadi; Telegram xabari parse_mode'siz (oddiy matn) yuboriladi.
+- Kamchilik: validatsiya xatosi HTTP 200 bilan qaytadi va frontend uni umumiy
+  "Xatolik yuz berdi" deb ko'rsatadi — foydalanuvchi qaysi maydon noto'g'ri ekanini bilmaydi.
+- Kamchilik: frontend telefon/email formatini tekshirmaydi (faqat bo'shlik).
+- Rate limit fayllari sys_get_temp_dir() da to'planadi va tozalanmaydi (kichik).
+- Bu natija ARXIVDAGI kodga tegishli; production'dagi send.php shu bilan bir xilligi tasdiqlanmagan.

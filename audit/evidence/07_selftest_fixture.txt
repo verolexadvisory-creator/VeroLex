@@ -1,6 +1,6 @@
-Selftest: 2026-10-01 14:39:00 Asia/Tashkent → 2026-10-01 14:40:01 Asia/Tashkent
+Selftest: 2026-10-01 18:09:23 Asia/Tashkent → 2026-10-01 18:10:28 Asia/Tashkent
 Brauzer: chromium 141.0.7390.37
-Vaqtinchalik natijalar: /tmp/verolex-selftest-pcOzES
+Vaqtinchalik natijalar: /tmp/verolex-selftest-rQ6BZA
 
 PASS  Sitemapdagi 7 URL topildi va 200 qaytardi
 PASS  Haqiqiy 404 aniqlandi

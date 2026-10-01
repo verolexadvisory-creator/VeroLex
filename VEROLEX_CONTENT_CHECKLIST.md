@@ -46,6 +46,7 @@ Sana: 2026-10-01, Asia/Tashkent. Bu jadvallarni VeroLex to'ldiradi.
 | 1.24 | Logo (SVG, och va to'q fon uchun) | PDF muqovasida rastr versiya (D1) | tasdiq kerak | Marketing | B-22 |
 | 1.25 | Brendbuk (ranglar, shriftlar) | README: “to'q ko'k/qora asos + oltin aksent” | tasdiq kerak | Marketing | Bo'lmasa REDESIGN_TZ §3–§4 taklifi tasdiqlanadi |
 | 1.26 | Ofis fotosuratlari | — | yetishmaydi | Marketing | §6 brifi |
+| 1.27 | Jamoa guruh surati | `assets/img/team.webp` — ofisda olingan professional guruh surati, 4 kishi (sayt arxivi, D1L) | bor | Marketing | Surati olingan har bir kishining ismi, lavozimi va nashrga roziligi §2 da to'ldiriladi. Individual portretlar alohida kerak |
 
 ## 2. Xodimlar
 

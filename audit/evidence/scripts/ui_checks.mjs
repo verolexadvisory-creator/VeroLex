@@ -46,13 +46,16 @@ async function newPage(viewport, opts = {}) {
   return { ctx, page, log, state, errors };
 }
 const url = (p) => (p.startsWith('http') ? p : `${BASE}${p}`);
+// Intro/preloader animatsiyalari tugashini kutish (ms); --settle 0 bilan o'chiriladi
+const SETTLE = args.settle !== undefined ? Number(args.settle) : 3500;
+async function gotoSettled(page, p) { await page.goto(url(p), { waitUntil: 'load', timeout: 45000 }); if (SETTLE) await sleep(SETTLE); }
 const slug = (p) => p.replace(/[^a-z0-9]+/gi, '_').replace(/^_|_$/g, '') || 'root';
 
 // ---------- Layout / overflow / skrinshot ----------
 async function layoutCheck(p, vp) {
   const { ctx, page, log } = await newPage(vp);
   try {
-    await page.goto(url(p), { waitUntil: 'load', timeout: 45000 });
+    await gotoSettled(page, p);
     await page.waitForLoadState('networkidle', { timeout: 8000 }).catch(() => {});
     const data = await page.evaluate((vw) => {
       const de = document.documentElement;
@@ -78,7 +81,7 @@ async function menuCheck(p) {
   const vp = VIEWPORTS[2];
   const { ctx, page } = await newPage(vp);
   try {
-    await page.goto(url(p), { waitUntil: 'load', timeout: 45000 });
+    await gotoSettled(page, p);
     const toggle = page.locator('button[aria-controls], .burger, .hamburger, .menu-toggle, .nav-toggle, [aria-label*="menu" i], [aria-label*="menyu" i], [aria-label*="меню" i]').filter({ visible: true }).first();
     if (!(await toggle.count())) return { found: false };
     const info = async () => toggle.evaluate((b) => ({ ariaExpanded: b.getAttribute('aria-expanded'), ariaControls: b.getAttribute('aria-controls'), ariaLabel: b.getAttribute('aria-label'), tag: b.tagName.toLowerCase() }));
@@ -114,7 +117,7 @@ async function menuCheck(p) {
 async function focusCheck(p) {
   const { ctx, page } = await newPage(VIEWPORTS[0]);
   try {
-    await page.goto(url(p), { waitUntil: 'load', timeout: 45000 });
+    await gotoSettled(page, p);
     const steps = [];
     for (let i = 0; i < 25; i++) {
       await page.keyboard.press('Tab');
@@ -133,12 +136,13 @@ async function focusCheck(p) {
 async function faqCheck(p) {
   const { ctx, page } = await newPage(VIEWPORTS[0]);
   try {
-    await page.goto(url(p), { waitUntil: 'load', timeout: 45000 });
+    await gotoSettled(page, p);
     const trigger = page.locator('details > summary, [class*="faq" i] button, [class*="faq" i] [class*="question" i], [class*="accordion" i] button, [class*="accordion" i] [class*="header" i]').first();
     if (!(await trigger.count())) return { found: false };
     const snap = () => trigger.evaluate((t) => {
       const item = t.tagName === 'SUMMARY' ? t.parentElement : t.parentElement?.closest('details, [class*="item" i], li, div');
-      const ans = item?.querySelector('[class*="answer" i], [class*="body" i], [class*="content" i], p');
+      // avval trigger'dan keyingi element (odatda javob konteyneri), keyin sinf nomi bo'yicha
+      const ans = (t.tagName !== 'SUMMARY' && t.nextElementSibling) || item?.querySelector('[class*="answer" i], [class*="faq-a" i], [class*="body" i], [class*="content" i], p');
       return { tag: t.tagName.toLowerCase(), role: t.getAttribute('role'), tabIndex: t.tabIndex, ariaExpanded: t.getAttribute('aria-expanded'), ariaControls: t.getAttribute('aria-controls'), itemClass: item?.className || null, detailsOpen: item?.tagName === 'DETAILS' ? item.open : null, answerHeight: ans ? Math.round(ans.getBoundingClientRect().height) : null };
     });
     const before = await snap();
@@ -158,7 +162,7 @@ async function langSwitchCheck(p) {
   const { ctx, page } = await newPage(VIEWPORTS[0]);
   const findSwitch = async (code) => {
     const names = { uz: /^(uz|uzb|o['ʻ‘]?z|o['ʻ‘]zbek(cha)?|ўзб?)$/i, ru: /^(ru|rus|рус(ский)?)$/i, en: /^(en|eng(lish)?)$/i };
-    const cands = page.locator(`a[hreflang="${code}"], a[lang="${code}"], a[data-lang="${code}"], header a, nav a, [class*="lang" i] a`);
+    const cands = page.locator(`a[hreflang="${code}"], a[lang="${code}"], a[data-lang="${code}"], button[data-lang="${code}"], header a, nav a, [class*="lang" i] a, [class*="lang" i] button`);
     const n = await cands.count();
     for (let i = 0; i < n; i++) {
       const a = cands.nth(i);
@@ -168,7 +172,7 @@ async function langSwitchCheck(p) {
     return null;
   };
   try {
-    await page.goto(url(p), { waitUntil: 'load', timeout: 45000 });
+    await gotoSettled(page, p);
     const seq = [{ step: 'start', url: page.url(), lang: await page.getAttribute('html', 'lang'), h1: await page.locator('h1').first().textContent().catch(() => null) }];
     for (const code of ['ru', 'en', 'uz']) {
       const a = await findSwitch(code);
@@ -189,7 +193,7 @@ async function langSwitchCheck(p) {
 async function a11yTexts(p) {
   const { ctx, page } = await newPage(VIEWPORTS[0]);
   try {
-    await page.goto(url(p), { waitUntil: 'load', timeout: 45000 });
+    await gotoSettled(page, p);
     const d = await page.evaluate(() => {
       const items = [];
       document.querySelectorAll('[aria-label],[alt],[title],[placeholder]').forEach((el) => {
@@ -228,7 +232,7 @@ async function describeForms(page) {
   })));
 }
 async function visibleMessages(page) {
-  return page.evaluate(() => [...document.querySelectorAll('[role="alert"],[aria-live],[class*="error" i],[class*="success" i],[class*="message" i],[class*="notice" i],[class*="toast" i],.invalid-feedback')]
+  return page.evaluate(() => [...document.querySelectorAll('[role="alert"],[role="status"],[aria-live],[class*="status" i],[class*="error" i],[class*="success" i],[class*="message" i],[class*="notice" i],[class*="toast" i],.invalid-feedback')]
     .filter((e) => e.offsetParent !== null && e.textContent.trim()).map((e) => ({ cls: typeof e.className === 'string' ? e.className.slice(0, 60) : '', role: e.getAttribute('role'), live: e.getAttribute('aria-live'), text: e.textContent.trim().replace(/\s+/g, ' ').slice(0, 160) })));
 }
 async function fillForm(page, formIndex, values) {
@@ -274,7 +278,7 @@ async function formScenarios(p) {
     for (const s of scen) {
       const t = await newPage(VIEWPORTS[0], { mode: 'locked', mock: s.mock });
       try {
-        await t.page.goto(url(p), { waitUntil: 'load', timeout: 45000 });
+        await gotoSettled(t.page, p);
         t.state.armed = true; // shu nuqtadan boshlab faqat statik resurslar tarmoqqa chiqadi
         const before = await visibleMessages(t.page);
         t.log.length = 0; // sahifa yuklanishidagi statik so'rovlar hisobga olinmaydi
@@ -300,7 +304,7 @@ async function formScenarios(p) {
 async function contactLinks(p) {
   const { ctx, page } = await newPage(VIEWPORTS[0]);
   try {
-    await page.goto(url(p), { waitUntil: 'load', timeout: 45000 });
+    await gotoSettled(page, p);
     return await page.evaluate(() => {
       const hrefs = [...document.querySelectorAll('a[href]')].map((a) => ({ href: a.getAttribute('href'), text: a.textContent.trim().slice(0, 40), target: a.target, rel: a.rel }));
       return {

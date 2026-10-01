@@ -10,6 +10,7 @@ Bajaruvchi: Claude Code (bulutli konteyner, Linux; Node 22.22.0; Playwright 1.56
 | **D1** | Shu sessiyada bevosita bajarilgan va dalil fayli saqlangan |
 | **D2** | Buyurtmachi bergan dastlabki audit kuzatuvi (`VeroLex_Audit_2026-10-01.md`, o'sha kuni). **Shu sessiyada qayta tekshirilmadi** |
 | **D3** | Qidiruv indeksidagi bilvosita dalil (`audit/evidence/04_search_index.md`) |
+| **D1L** | Shu sessiyada bevosita tekshirilgan, lekin foydalanuvchi bergan **sayt arxivida** (lokal nusxa, fayllar sanasi 2026-08-10). Production bilan bir xilligi tasdiqlanmagan (`audit/evidence/08_local_copy/`) |
 | **PASS / FAIL** | Kutilgan natija bajarildi / bajarilmadi |
 | **BLOCKED** | Kirish yoki vosita yo'qligi sababli bajarilmadi. Bu muvaffaqiyatsiz test emas |
 | **REJA** | Hali yaratilmagan modul uchun qabul testi. Bajarilgan test emas |
@@ -131,3 +132,46 @@ Bu modullar hali yaratilmagan. Quyidagi testlar ular tayyor bo'lgach stagingda b
 | Q-18 | Filtr | Geografiya va holat filtri | To'g'ri natija; filtrli URL noindex |
 | Q-19 | Ruxsat | “Logo ruxsati: yo'q” | Kompaniya nashr qilinmaydi; ichki qayd ommaviy HTMLda yo'q |
 | Q-20 | Admin | Hamkor qo'shish, logo almashtirish, tartiblash, yashirish | 3 tilda aks etadi |
+
+## 5. Sayt arxivi bo'yicha testlar (D1L, 2026-10-01 17:55–18:40)
+
+Foydalanuvchi `verolex-sayt_8_1.zip` arxivini yukladi. Arxiv 67 fayldan iborat: 39 ta HTML sahifa, `send.php`, `diagnostika.php`, `.htaccess`, `.env`. Sahifalar lokal serverda ochildi, `send.php` esa PHP serverda tokensiz sinaldi. `.env` lokal nusxaga ko'chirilmadi, uning qiymatlari o'qilmadi va yozilmadi. To'liq natijalar: `audit/evidence/08_local_copy/README.md`.
+
+**Muhim.** Arxiv production'dan farq qiladi: GA4 kodi va email boshqacha (LC-01 izohi). Shuning uchun quyidagi L-testlar lokal nusxada **qisman** bajarildi. Production uchun ular BLOCKED bo'lib qoladi.
+
+| L-test | Lokal natija (LC) | Natija |
+|---|---|---|
+| L-01 Sitemap va robots | 39 URL, barchasi 200; robots.txt to'g'ri; sitemapdagi `loc` canonical bilan bir xil | PASS (lokal) |
+| L-02 Metadata | Title va description noyob, har sahifada bitta H1, meta keywords yo'q. Heading darajasi o'tkazib yuborilgan: barcha sahifalarda `h2→h4`, aloqa sahifalarida `h1→h3` | PASS / FAIL (heading) |
+| L-03 Aliaslar | `index.html` va `/` ikkalasi ham 200 qaytaradi; menyu `index.html` ga olib boradi; `.htaccess` da `index.html` uchun 301 yo'q (kod). HTTPS va www qoidalari kodda bor, production'da tekshirilmadi | FAIL (alias) |
+| L-04 404 | Lokal serverda 404; `.htaccess` da `ErrorDocument 404 /index.html` (alohida 404 sahifasi yo'q) | Qisman |
+| L-05 hreflang | O'zaro bog'langan, x-default bor | PASS (lokal) |
+| L-06 JSON-LD | Xatosiz; NAP va email ko'rinadigan matnga mos | PASS (lokal) |
+| L-07 Raw va DOM | JS title, H1 va emailni o'zgartirmaydi | PASS (lokal) |
+| L-08 NAP | Arxivda bitta email (gmail) va bitta telefon | PASS (arxivda); production — FAIL (D2) |
+| L-09 Havolalar | Buzilgan havola yo'q. “Xizmatlar” ota-bandi `href="#"`, pastki havolalar haqiqiy | PASS |
+| L-10 Rasmlar | Alt matni yo'q rasm — 0; `width`/`height` va `lazy` bor | PASS |
+| L-11 Viewportlar | 1440, 768, 390 va 360 px'da overflow 0, kesilgan matn 0 | PASS |
+| L-12 Mobil menyu | `aria-expanded` yo'q; Escape yopadi; yopiq menyuda yashirin fokus 0 | Qisman |
+| L-13 Til almashtirish | Har sahifada to'g'ri ishlaydi; back, forward va reload ishlaydi | PASS |
+| L-14 FAQ | `<button>`, Enter bilan ochiladi; `aria-expanded` yo'q | Qisman |
+| L-15 Forma (mock) | Bo'sh forma rad etiladi (3 tilda xabar). Noto'g'ri telefon va email brauzerdan o'tib ketadi. Ikki marta bosishda 1 so'rov. 500 xatoda xato xabari chiqadi | Qisman |
+| L-15b `send.php` | Validatsiya, honeypot va rate limit (5/daqiqa → 429) ishlaydi | PASS |
+| L-16 Label | `<label>` bor, lekin `for`/`id` bilan bog'lanmagan | FAIL |
+| L-17 Havolalar | tel:, mailto:, Telegram, 5 ta ijtimoiy tarmoq, Google xarita iframe — README'dagi ro'yxatga mos | PASS |
+| L-18 A11y matnlari | RU/EN'da “Til tanlash”, “Yopish”, “Menyu”, “Adolat tarozisi” o'zbekcha qolgan. Reduced-motion hurmat qilinadi | FAIL (lokalizatsiya) |
+| L-19 Analitika | Arxivda GA4 namunaviy ID bilan o'chiq, lekin sharti to'g'ri yozilgan; Ads `AW-17593861057`, `ADS_LABEL` bo'sh; Metrika yo'q | Kod tekshirildi |
+| L-28 Open Graph | Barcha sahifalarda to'liq; Twitter card ham bor | PASS (lokal) |
+| L-24 Admin | Arxivda admin panel yoki CMS yo'q | FAIL (TZ §6.2) |
+| L-27 Xavfsizlik (kod) | `send.php` — xavf past. `diagnostika.php` parolsiz web root'da; arxivda haqiqiy `.env` | FAIL (REC-017) |
+
+Qo'shimcha kuzatuvlar:
+- **LC-14:** bosh sahifalarda 2,9 soniyalik intro animatsiya kontentni yopadi.
+- **LC-17:** saytda “24/7”, “100% onlayn” va “2020-yildan” da'volari bor.
+- **LC-18:** haqiqiy jamoa guruh surati bor.
+- **LC-20:** 2 ta shrift oilasi ishlatilgan, ular Google Fonts'dan yuklanadi.
+- **LC-21:** 9 xil yo'nalish uchun 9 xil aksent rangi bor.
+
+Ishlatilgan vositalar va tuzatishlar:
+- `site_inventory.mjs` va `ui_checks.mjs` (Chromium 141), PHP 8.
+- Arxiv tekshiruvi skriptlardagi 4 ta selektor kamchiligini ko'rsatdi: tugma ko'rinishidagi til tanlagich, `role="status"` xabari, FAQ javob konteyneri, matn tugunlaridan email ajratish. Shuningdek, intro animatsiyasi tugashini kutish (`--settle`) qo'shildi. Tuzatishlardan keyin selftest yana **17/17 PASS**.
