@@ -1,0 +1,23 @@
+Selftest: 2026-10-01 14:39:00 Asia/Tashkent → 2026-10-01 14:40:01 Asia/Tashkent
+Brauzer: chromium 141.0.7390.37
+Vaqtinchalik natijalar: /tmp/verolex-selftest-pcOzES
+
+PASS  Sitemapdagi 7 URL topildi va 200 qaytardi
+PASS  Haqiqiy 404 aniqlandi
+PASS  Bir nechta email aniqlandi
+PASS  hreflang qaytish havolasi yo'qligi aniqlandi
+PASS  GA4 IDsi bilan solishtiruvchi shart aniqlandi (A01 turidagi xato)
+PASS  Open Graph yetishmasligi aniqlandi
+PASS  Labelsiz (faqat placeholder) maydonlar aniqlandi
+PASS  novalidate aniqlandi
+PASS  Honeypot maydoni aniqlandi
+PASS  Bo'sh forma: EN xabar ushlandi va so'rov yuborilmadi
+PASS  Noto'g'ri telefon frontendda qabul qilinishi aniqlandi (mock)
+PASS  Ikki marta bosishda 2 so'rov aniqlandi (mock)
+PASS  Forma so'rovlari serverga yetib bormadi (server hisoblagichi: GET bo'lmagan=0, /api/=0)
+PASS  RU/EN sahifada o'zbekcha aria-label aniqlandi
+PASS  FAQ: aria-expanded yo'qligi va klaviatura bilan ochilmasligi aniqlandi
+PASS  Mobil gorizontal overflow aniqlandi
+PASS  Til almashtirish ketma-ketligi qayd etildi
+
+Jami: 17/17 PASS

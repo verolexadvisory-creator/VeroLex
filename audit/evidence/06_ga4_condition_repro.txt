@@ -1,0 +1,7 @@
+{
+  "GA4_ID": "G-N4Z7XF5GGK",
+  "hasGA4_kuzatilgan_shart": false,
+  "hasGA4_taklif_etilgan_shart": true,
+  "namunaviy_id_rad_etiladimi": true,
+  "bosh_qiymat_rad_etiladimi": true
+}
