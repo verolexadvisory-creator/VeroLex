@@ -1,0 +1,255 @@
+{
+  "usul": "WCAG 2.x relative luminance",
+  "ranglar": {
+    "navy": "#142131",
+    "bg": "#F7F6F2",
+    "text": "#20262E",
+    "gold": "#AD8A4F",
+    "white": "#FFFFFF",
+    "muted": "#5B6470",
+    "goldDark": "#7A5E2E",
+    "goldLight": "#C9A86A",
+    "line": "#D9D4C7",
+    "border": "#7D838B",
+    "error": "#B42318",
+    "success": "#1E6B41",
+    "onNavy2": "#E8E4DA",
+    "onNavyMuted": "#AEB6C2"
+  },
+  "natijalar": [
+    {
+      "juftlik": "#20262E / #F7F6F2",
+      "izoh": "Asosiy matn — och fonda",
+      "nisbat": 14.09,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "PASS",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#20262E / #FFFFFF",
+      "izoh": "Asosiy matn — oq fonda",
+      "nisbat": 15.24,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "PASS",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#142131 / #F7F6F2",
+      "izoh": "To'q ko'k matn/sarlavha — och fonda",
+      "nisbat": 15.03,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "PASS",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#FFFFFF / #142131",
+      "izoh": "Oq matn — to'q ko'k header/footer/tugma",
+      "nisbat": 16.26,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "PASS",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#F7F6F2 / #142131",
+      "izoh": "Och fon rangidagi matn — to'q ko'k fonda",
+      "nisbat": 15.03,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "PASS",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#5B6470 / #F7F6F2",
+      "izoh": "Ikkilamchi matn (taklif #5B6470) — och fonda",
+      "nisbat": 5.55,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#AD8A4F / #F7F6F2",
+      "izoh": "Oltin — och fonda (matn uchun)",
+      "nisbat": 2.98,
+      "AA_oddiy_matn_4.5": "FAIL",
+      "AA_katta_matn_3.0": "FAIL",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "FAIL"
+    },
+    {
+      "juftlik": "#AD8A4F / #FFFFFF",
+      "izoh": "Oltin — oq fonda (matn uchun)",
+      "nisbat": 3.22,
+      "AA_oddiy_matn_4.5": "FAIL",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#AD8A4F / #142131",
+      "izoh": "Oltin — to'q ko'k fonda",
+      "nisbat": 5.05,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#FFFFFF / #AD8A4F",
+      "izoh": "Oq matn — oltin tugmada",
+      "nisbat": 3.22,
+      "AA_oddiy_matn_4.5": "FAIL",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#142131 / #AD8A4F",
+      "izoh": "To'q ko'k matn — oltin tugmada",
+      "nisbat": 5.05,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#7A5E2E / #F7F6F2",
+      "izoh": "To'q oltin (taklif #7A5E2E) — och fonda",
+      "nisbat": 5.6,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#C9A86A / #142131",
+      "izoh": "Och oltin (taklif #C9A86A) — to'q ko'k fonda",
+      "nisbat": 7.19,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "PASS",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#D9D4C7 / #F7F6F2",
+      "izoh": "Ajratuvchi chiziq (taklif #D9D4C7) — och fonda (dekorativ)",
+      "nisbat": 1.37,
+      "AA_oddiy_matn_4.5": "FAIL",
+      "AA_katta_matn_3.0": "FAIL",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "FAIL"
+    },
+    {
+      "juftlik": "#142131 / #FFFFFF",
+      "izoh": "Fokus halqasi to'q ko'k — oq fonda (UI komponent)",
+      "nisbat": 16.26,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "PASS",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#C9A86A / #142131",
+      "izoh": "Fokus halqasi och oltin — to'q ko'k fonda (UI komponent)",
+      "nisbat": 7.19,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "PASS",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#5B6470 / #FFFFFF",
+      "izoh": "Ikkilamchi matn — oq kartada",
+      "nisbat": 6,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#7D838B / #FFFFFF",
+      "izoh": "Input chegarasi (taklif #7D838B) — oq fonda (UI komponent)",
+      "nisbat": 3.82,
+      "AA_oddiy_matn_4.5": "FAIL",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#7D838B / #F7F6F2",
+      "izoh": "Input chegarasi — och fonda (UI komponent)",
+      "nisbat": 3.54,
+      "AA_oddiy_matn_4.5": "FAIL",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#B42318 / #FFFFFF",
+      "izoh": "Xato matni (taklif #B42318) — oq fonda",
+      "nisbat": 6.57,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#B42318 / #F7F6F2",
+      "izoh": "Xato matni — och fonda",
+      "nisbat": 6.08,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#1E6B41 / #FFFFFF",
+      "izoh": "Muvaffaqiyat matni (taklif #1E6B41) — oq fonda",
+      "nisbat": 6.49,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#1E6B41 / #F7F6F2",
+      "izoh": "Muvaffaqiyat matni — och fonda",
+      "nisbat": 6,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#FFFFFF / #7A5E2E",
+      "izoh": "Oq matn — to'q oltin tugmada",
+      "nisbat": 6.06,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "FAIL",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#E8E4DA / #142131",
+      "izoh": "Footer ikkilamchi matni (taklif #E8E4DA) — to'q ko'k fonda",
+      "nisbat": 12.81,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "PASS",
+      "UI_komponent_3.0": "PASS"
+    },
+    {
+      "juftlik": "#AEB6C2 / #142131",
+      "izoh": "Footer xira matni (taklif #AEB6C2) — to'q ko'k fonda",
+      "nisbat": 7.95,
+      "AA_oddiy_matn_4.5": "PASS",
+      "AA_katta_matn_3.0": "PASS",
+      "AAA_oddiy_matn_7.0": "PASS",
+      "UI_komponent_3.0": "PASS"
+    }
+  ]
+}

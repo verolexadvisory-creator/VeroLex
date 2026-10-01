@@ -1,0 +1,24 @@
+Repository inventarizatsiyasi (faqat o'qish)
+Vaqt: 2026-10-01 14:18 Asia/Tashkent
+Remote: verolexadvisory-creator/VeroLex (GitHub, visibility: public)
+Tekshirilgan holat: audit fayllari qo'shilishidan oldingi commit 68ca0b8
+
+$ git log --oneline
+68ca0b8 Update README.md
+629f26a Initial commit
+
+$ git ls-tree -r --name-only 68ca0b8
+README.md
+
+AGENTS.md / CLAUDE.md: yo'q
+Sayt manba kodi (HTML/CSS/JS, backend, admin): bu repositoryda yo'q.
+README.md mazmuni: tijorat taklifi va rasmiy xat shabloni bo'yicha ichki yo'riqnoma (sayt kodi emas).
+README.md dagi auditga tegishli faktlar (kontent manbasi sifatida, tasdiq kerak):
+  README.md:40:- 2020-yildan beri biznes mijozlariga xizmat ko'rsatamiz.
+  README.md:41:- To'rt tilda hujjat aylanmasi: o'zbek, rus, ingliz, xitoy — xorijiy sarmoyali korxonalar uchun tarjimon shart emas.
+  README.md:44:- Uch xil to'lov modeli — mijoz o'z hajmiga mos formatni tanlaydi.
+  README.md:67:"Vero Lex Advisory" MChJ
+  README.md:68:Bosh yurist            [imzo]        Tojiboyev I.
+  README.md:93:Toshkent sh., Yunusobod tumani, Markaz-4, Abdulla Qodiriy ko'chasi, 28A
+  README.md:94:Tel: +998 77 143 68 88 | E-mail: verolexadvisory@gmail.com | verolex.uz
+  README.md:95:STIR: 312434537

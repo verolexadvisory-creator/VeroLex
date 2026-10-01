@@ -1,0 +1,37 @@
+DOCX tuzilmasi: Vero Lex(Draft)_website.docx
+O'qish usuli: unzip + word/document.xml XML tahlili (Python ElementTree); jadvallar katakma-katak o'qildi.
+Fayl metama'lumoti (docProps/core.xml): yaratilgan 2026-09-07T05:13Z, o'zgartirilgan 2026-09-09T04:32Z, revision 2.
+Sarlavha: 'ТЕХНИЧЕСКОЕ ЗАДАНИЕ на разработку корпоративного сайта юридической фирмы [черновик для согласования]'
+Jadvallar soni: 4 (1-bo'lim parametrlari, 5-bo'lim sayt xaritasi, 8-bo'lim texnik talablar, 11-bo'lim bosqichlar)
+Ro'yxat bandlari (bullet) soni: 62
+
+Bo'lim sarlavhalari:
+  1. Общие сведения о проекте
+  2. Цели и задачи сайта
+  Задачи:
+  3. Целевая аудитория
+  4. Требования к языковым версиям
+  5. Структура сайта (карта разделов)
+  6. Функциональные требования
+  6.1. Общий функционал
+  6.2. Административная панель
+  7. Требования к дизайну и UX
+  8. Технические требования
+  9. Требования к контенту
+  10. Требования к хостингу и технической поддержке
+  11. Этапы разработки
+  12. Критерии приeмки
+  13. Открытые вопросы (требуют уточнения с заказчиком)
+  Приложение. Сайты-аналоги
+
+5-bo'lim jadvali (sayt xaritasi) qatorlari:
+  Раздел 
+  Главная 
+  О компании / Фирма 
+  Экспертиза / Практики 
+  Команда / Партнeры 
+  Кейсы и проекты 
+  Новости и аналитика 
+  Карьера 
+  Контакты 
+  Политика конфиденциальности 

@@ -1,0 +1,18 @@
+Sessiya muhiti va tarmoq cheklovi
+Yozilgan vaqt: 2026-10-01 14:18 +05 (Asia/Tashkent)
+Muhit: Claude Code bulutli konteyner (Linux), Node v22.22.0, Playwright 1.56.1, Chromium chromium-1194
+Firefox/WebKit: o'rnatilmagan (/opt/pw-browsers ichida faqat chromium) -> cross-browser test BLOCKED
+
+$ curl -sS -o /dev/null -w '%{http_code}' https://verolex.uz/
+  curl: (56) CONNECT tunnel failed, response 403
+  000
+$ curl https://verolex.uz/robots.txt
+  curl: (56) CONNECT tunnel failed, response 403
+$ curl https://www.verolex.uz/
+  curl: (56) CONNECT tunnel failed, response 403
+
+WebFetch vositasi (https://verolex.uz/robots.txt, https://verolex.uz/sitemap.xml):
+  {"error_type":"EGRESS_BLOCKED","domain":"verolex.uz","message":"Access to verolex.uz is blocked by the network egress proxy."}
+
+Xulosa: verolex.uz bu muhit tarmoq siyosati bilan bloklangan. Bu sayt nosozligi EMAS.
+Jonli sayt testlari BLOCKED deb belgilandi; ularni qayta ishga tushirish uchun skriptlar tayyor: audit/evidence/scripts/.
