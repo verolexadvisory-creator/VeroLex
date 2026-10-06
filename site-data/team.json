@@ -1,13 +1,137 @@
 {
-  "_izoh": "Jamoa a'zolari. name va position (kamida uz tilida) to'ldirilib, published=true qilinsa saytda chiqadi. photo: assets/img/team/ ichidagi fayl. leader=true bo'lgan a'zo alohida katta kartada chiqadi. Rasmlar jamoa suratidan qirqilgan (1–4 raqamlar: jamoa_portretlar_1-4.png).",
-  "members": [
-    {"id": "p4", "photo": "assets/img/team/p4.webp", "leader": false, "order": 1, "published": false,
-     "name": {"uz": "", "ru": "", "en": ""}, "position": {"uz": "", "ru": "", "en": ""}, "specialization": {"uz": "", "ru": "", "en": ""}},
-    {"id": "p1", "photo": "assets/img/team/p1.webp", "leader": false, "order": 2, "published": false,
-     "name": {"uz": "", "ru": "", "en": ""}, "position": {"uz": "", "ru": "", "en": ""}, "specialization": {"uz": "", "ru": "", "en": ""}},
-    {"id": "p2", "photo": "assets/img/team/p2.webp", "leader": false, "order": 3, "published": false,
-     "name": {"uz": "", "ru": "", "en": ""}, "position": {"uz": "", "ru": "", "en": ""}, "specialization": {"uz": "", "ru": "", "en": ""}},
-    {"id": "p3", "photo": "assets/img/team/p3.webp", "leader": false, "order": 4, "published": false,
-     "name": {"uz": "", "ru": "", "en": ""}, "position": {"uz": "", "ru": "", "en": ""}, "specialization": {"uz": "", "ru": "", "en": ""}}
-  ]
+ "_izoh": "Jamoa a'zolari. Manba: KP_ru_2026.pdf (Наша команда). published=true bo'lganlar saytda chiqadi. p1, p2 — jamoa suratidagi, ismi hali berilmagan xodimlar (site-data/jamoa_portretlar_1-4.png). Lotin/ingliz yozilishini VeroLex tasdiqlaydi.",
+ "members": [
+  {
+   "id": "qosimov-otabek",
+   "photo": "assets/img/team/qosimov-otabek.webp",
+   "leader": true,
+   "order": 1,
+   "published": true,
+   "name": {
+    "uz": "Qosimov Otabek",
+    "ru": "Касымов Отабек",
+    "en": "Otabek Kasymov"
+   },
+   "position": {
+    "uz": "Bosh direktor",
+    "ru": "Генеральный директор",
+    "en": "General Director"
+   },
+   "specialization": {
+    "uz": "Korporativ, soliq, ekologiya va bojxona huquqi. Biznesni kompleks yuridik qo'llab-quvvatlash.",
+    "ru": "Корпоративное, налоговое, экологическое и таможенное право. Комплексное сопровождение бизнеса.",
+    "en": "Corporate, tax, environmental and customs law. Comprehensive legal support for business."
+   }
+  },
+  {
+   "id": "tojiboyev-ibrohim",
+   "photo": "assets/img/team/tojiboyev-ibrohim.webp",
+   "leader": false,
+   "order": 2,
+   "published": true,
+   "name": {
+    "uz": "Tojiboyev Ibrohim",
+    "ru": "Тожибоев Иброхим",
+    "en": "Ibrokhim Tojiboev"
+   },
+   "position": {
+    "uz": "Bosh yurist",
+    "ru": "Главный юрист",
+    "en": "Head of Legal"
+   },
+   "specialization": {
+    "uz": "Korporativ va shartnoma huquqi. Biznes tuzilmasi, bitimlar va kompaniya manfaatlarini himoya qilish.",
+    "ru": "Корпоративное и договорное право. Структура бизнеса, сделки и защита интересов компании.",
+    "en": "Corporate and contract law. Business structuring, transactions and protection of company interests."
+   }
+  },
+  {
+   "id": "muminov-azimxoja",
+   "photo": "assets/img/team/muminov-azimxoja.webp",
+   "leader": false,
+   "order": 3,
+   "published": true,
+   "name": {
+    "uz": "Mo'minov Azimxo'ja",
+    "ru": "Муминов Азимхужа",
+    "en": "Azimkhuja Muminov"
+   },
+   "position": {
+    "uz": "Advokat",
+    "ru": "Адвокат",
+    "en": "Attorney"
+   },
+   "specialization": {
+    "uz": "Fuqarolik va iqtisodiy sud jarayonlari. Biznesni sudda himoya qilish.",
+    "ru": "Гражданские и экономические судебные процессы. Защита бизнеса в суде.",
+    "en": "Civil and commercial litigation. Defending businesses in court."
+   }
+  },
+  {
+   "id": "xasanova-sevinch",
+   "photo": "assets/img/team/xasanova-sevinch.webp",
+   "leader": false,
+   "order": 4,
+   "published": true,
+   "name": {
+    "uz": "Xasanova Sevinch",
+    "ru": "Хасанова Севинч",
+    "en": "Sevinch Khasanova"
+   },
+   "position": {
+    "uz": "Yurist",
+    "ru": "Юрист",
+    "en": "Lawyer"
+   },
+   "specialization": {
+    "uz": "Jinoyat huquqi va iqtisodiy jinoyatlar. Xavflarning oldini olish va komplayens.",
+    "ru": "Уголовное право и экономические преступления. Предотвращение рисков и комплаенс.",
+    "en": "Criminal law and economic crimes. Risk prevention and compliance."
+   }
+  },
+  {
+   "id": "p1",
+   "photo": "assets/img/team/p1.webp",
+   "leader": false,
+   "order": 5,
+   "published": false,
+   "name": {
+    "uz": "",
+    "ru": "",
+    "en": ""
+   },
+   "position": {
+    "uz": "",
+    "ru": "",
+    "en": ""
+   },
+   "specialization": {
+    "uz": "",
+    "ru": "",
+    "en": ""
+   }
+  },
+  {
+   "id": "p2",
+   "photo": "assets/img/team/p2.webp",
+   "leader": false,
+   "order": 6,
+   "published": false,
+   "name": {
+    "uz": "",
+    "ru": "",
+    "en": ""
+   },
+   "position": {
+    "uz": "",
+    "ru": "",
+    "en": ""
+   },
+   "specialization": {
+    "uz": "",
+    "ru": "",
+    "en": ""
+   }
+  }
+ ]
 }

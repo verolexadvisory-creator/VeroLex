@@ -15,6 +15,12 @@ Har bir til **alohida manzilda** joylashgan — bu Google va Yandex uchun muhim.
 | 6 | SEO: Organization JSON-LD'ga `contactPoint`, `foundingDate`, LinkedIn; jamoa a'zolari uchun `Person` (ma'lumot kiritilganda); `sitemap.xml` da `lastmod` |
 | 7 | Kompyuterda faylni to'g'ridan-to'g'ri ochganda (`file://`) ham havolalar ishlaydi |
 
+### Joriy ma'lumot (KP_ru_2026.pdf asosida)
+- Jamoa: Qosimov Otabek (Bosh direktor, rahbar), Tojiboyev Ibrohim (Bosh yurist), Mo'minov Azimxo'ja (Advokat), Xasanova Sevinch (Yurist) — fotosuratlari bilan.
+- Bizga ishonch bildirgan kompaniyalar (12): Be TradeR, Taxi Millennium, M. Sokhiba, Yur Tur, Aurora, Prima, Turan Catering, Mediva Resort, Trading Academy, Belpharm (mahalliy); Ajanta Pharma, Leapmotor (xorijiy).
+- Bosh sahifa ko'rsatkichlari: 50+ mijoz, 9 yo'nalish, 24 soat ichida javob, 3 til.
+- Hali kutilmoqda: jamoa suratidagi yana 2 xodimning ismi va lavozimi (`p1`, `p2`), nomi aniq bo'lmagan 3 logo, to'liq mijoz/hamkor ro'yxati.
+
 ### Jamoa va hamkorlarni qo'shish
 
 Ma'lumot repodagi `site-data/team.json` va `site-data/partners.json` fayllarida. To'ldirilgach, `python3 tools/build_site.py site` buyrug'i sahifalarni qayta yig'adi (bosh sahifa va "Biz haqimizda", 3 tilda).

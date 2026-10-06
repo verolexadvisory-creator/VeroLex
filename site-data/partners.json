@@ -1,4 +1,173 @@
 {
-  "_izoh": "Kompaniyalar. relation: client (bizga ishonch bildirgan) | partner (hamkor). scope: local | foreign. status: current | past. logo: assets/img/partners/ ichidagi fayl (bo'lmasa nom ko'rsatiladi). Faqat VeroLex ruxsat bergan kompaniyalar, published=true.",
-  "companies": []
+ "_izoh": "Manba: KP_ru_2026.pdf (Нам доверяют). relation: client | partner; scope: local | foreign; status: current | past | bo'sh (ko'rsatilmaydi). Mahalliy/xorijiy bo'linishini VeroLex tasdiqlaydi. Nomi aniq bo'lmagan 3 logo (kids, olov-barg, ko'k 'm') hali qo'shilmagan.",
+ "companies": [
+  {
+   "name": "Be TradeR",
+   "logo": "assets/img/partners/be-trader.png",
+   "country": {
+    "uz": "O'zbekiston",
+    "ru": "Узбекистан",
+    "en": "Uzbekistan"
+   },
+   "scope": "local",
+   "relation": "client",
+   "status": "",
+   "published": true,
+   "order": 0
+  },
+  {
+   "name": "Taxi Millennium",
+   "logo": "assets/img/partners/taxi-millennium.png",
+   "country": {
+    "uz": "O'zbekiston",
+    "ru": "Узбекистан",
+    "en": "Uzbekistan"
+   },
+   "scope": "local",
+   "relation": "client",
+   "status": "",
+   "published": true,
+   "order": 1
+  },
+  {
+   "name": "M. Sokhiba",
+   "logo": "assets/img/partners/m-sokhiba.png",
+   "country": {
+    "uz": "O'zbekiston",
+    "ru": "Узбекистан",
+    "en": "Uzbekistan"
+   },
+   "scope": "local",
+   "relation": "client",
+   "status": "",
+   "published": true,
+   "order": 2
+  },
+  {
+   "name": "Yur Tur",
+   "logo": "assets/img/partners/yur-tur.png",
+   "country": {
+    "uz": "O'zbekiston",
+    "ru": "Узбекистан",
+    "en": "Uzbekistan"
+   },
+   "scope": "local",
+   "relation": "client",
+   "status": "",
+   "published": true,
+   "order": 3
+  },
+  {
+   "name": "Aurora",
+   "logo": "assets/img/partners/aurora.png",
+   "country": {
+    "uz": "O'zbekiston",
+    "ru": "Узбекистан",
+    "en": "Uzbekistan"
+   },
+   "scope": "local",
+   "relation": "client",
+   "status": "",
+   "published": true,
+   "order": 4
+  },
+  {
+   "name": "Prima",
+   "logo": "assets/img/partners/prima.png",
+   "country": {
+    "uz": "O'zbekiston",
+    "ru": "Узбекистан",
+    "en": "Uzbekistan"
+   },
+   "scope": "local",
+   "relation": "client",
+   "status": "",
+   "published": true,
+   "order": 5
+  },
+  {
+   "name": "Turan Catering",
+   "logo": "assets/img/partners/turan-catering.png",
+   "country": {
+    "uz": "O'zbekiston",
+    "ru": "Узбекистан",
+    "en": "Uzbekistan"
+   },
+   "scope": "local",
+   "relation": "client",
+   "status": "",
+   "published": true,
+   "order": 6
+  },
+  {
+   "name": "Mediva Resort",
+   "logo": "assets/img/partners/mediva-resort.png",
+   "country": {
+    "uz": "O'zbekiston",
+    "ru": "Узбекистан",
+    "en": "Uzbekistan"
+   },
+   "scope": "local",
+   "relation": "client",
+   "status": "",
+   "published": true,
+   "order": 7
+  },
+  {
+   "name": "Trading Academy",
+   "logo": "assets/img/partners/trading-academy.png",
+   "country": {
+    "uz": "O'zbekiston",
+    "ru": "Узбекистан",
+    "en": "Uzbekistan"
+   },
+   "scope": "local",
+   "relation": "client",
+   "status": "",
+   "published": true,
+   "order": 8
+  },
+  {
+   "name": "Belpharm",
+   "logo": "assets/img/partners/belpharm.png",
+   "country": {
+    "uz": "O'zbekiston",
+    "ru": "Узбекистан",
+    "en": "Uzbekistan"
+   },
+   "scope": "local",
+   "relation": "client",
+   "status": "",
+   "published": true,
+   "order": 9
+  },
+  {
+   "name": "Ajanta Pharma",
+   "logo": "assets/img/partners/ajanta-pharma.png",
+   "country": {
+    "uz": "Hindiston",
+    "ru": "Индия",
+    "en": "India"
+   },
+   "scope": "foreign",
+   "relation": "client",
+   "status": "",
+   "published": true,
+   "order": 20
+  },
+  {
+   "name": "Leapmotor",
+   "logo": "assets/img/partners/leapmotor.png",
+   "country": {
+    "uz": "Xitoy",
+    "ru": "Китай",
+    "en": "China"
+   },
+   "scope": "foreign",
+   "relation": "client",
+   "status": "",
+   "published": true,
+   "order": 21
+  }
+ ]
 }

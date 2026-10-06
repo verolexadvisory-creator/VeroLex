@@ -161,20 +161,20 @@ for p in pages:
     if LINKEDIN_OLD in s: s = s.replace(LINKEDIN_OLD, LINKEDIN_NEW); bump('linkedin')
     # bosh sahifa: tarozi o'rniga jamoa surati, harakatlanuvchi lenta olib tashlanadi, yangi bloklar
     if p.name == 'index.html':
-        fig = (f'<figure class="hero-photo hr-seq d4"><img src="assets/img/team.webp" alt="{L["team_photo_alt"][lang]}" width="1092" height="1120" fetchpriority="high" decoding="async">'
+        fig = (f'<figure class="hero-photo hr-seq d4"><img src="{root_prefix}assets/img/team.webp" alt="{L["team_photo_alt"][lang]}" width="1092" height="1120" fetchpriority="high" decoding="async">'
                f'<figcaption><b>{L["team_photo_cap"][lang]}</b>{L["team_photo_sub"][lang]}</figcaption></figure>')
         s, n = re.subn(r'<div class="scales-wrap hr-seq d4">\s*<svg class="scales".*?</svg>\s*</div>', fig, s, flags=re.S)
         if n: bump('hero_photo')
         s, n = re.subn(r'\n?<div class="ticker" aria-hidden="true">.*?</div>\s*</div>\n', '\n', s, flags=re.S)
         if n: bump('ticker')
         faq_anchor = '<section class="sec">\n  <div class="container">\n    <div class="sec-head center reveal">\n      <span class="eyebrow" data-i18n="ex_faq_pre">'
-        s = put_block(s, 'HOME-TEAM', home_team(lang, ''), faq_anchor)
-        s = put_block(s, 'HOME-PARTNERS', home_partners(lang, ''), faq_anchor)
+        s = put_block(s, 'HOME-TEAM', home_team(lang, root_prefix), faq_anchor)
+        s = put_block(s, 'HOME-PARTNERS', home_partners(lang, root_prefix), faq_anchor)
     # Biz haqimizda: jamoa va hamkorlar bo'limlari
     if p.name == 'about.html':
         anchor = '<section class="sec" style="padding-bottom:0"></section>'
-        s = put_block(s, 'TEAM', team_section(lang, ''), anchor)
-        s = put_block(s, 'PARTNERS', partners_section(lang, ''), anchor)
+        s = put_block(s, 'TEAM', team_section(lang, root_prefix), anchor)
+        s = put_block(s, 'PARTNERS', partners_section(lang, root_prefix), anchor)
     if s != o:
         p.write_text(s, encoding='utf-8'); bump('files')
 
