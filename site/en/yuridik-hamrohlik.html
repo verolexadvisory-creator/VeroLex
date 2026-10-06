@@ -12,8 +12,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;600;700;800&display=swap&subset=cyrillic" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/style.css?v=8">
-<link rel="stylesheet" href="../assets/css/vl-extra.css?v=8">
+<link rel="stylesheet" href="../assets/css/style.css?v=9">
+<link rel="stylesheet" href="../assets/css/vl-extra.css?v=9">
 <style>/* muhim tuzatish — eski kesh saqlanib qolgan taqdirda ham ishlaydi */
 img{height:auto}.about-photo img{width:100%;height:auto;display:block}
 .vl-intro-mark img{height:auto}</style>
@@ -52,12 +52,12 @@ img{height:auto}.about-photo img{width:100%;height:auto;display:block}
 <body data-acc="5" data-title-key="out:out_title">
 <header class="header">
   <div class="container header-in">
-    <a class="brand" href="index.html" aria-label="VeroLex Advisory">
+    <a class="brand" href="./" aria-label="VeroLex Advisory">
       <img decoding="async" fetchpriority="high" src="../assets/img/logo.png" alt="VeroLex Advisory logo" width="44" height="54">
       <span><b>VeroLex</b><small>Advisory</small></span>
     </a>
     <ul class="nav">
-      <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+      <li><a href="./" data-i18n="nav_home">Home</a></li>
       <li class="dd"><a href="#" class="active"><span data-i18n="nav_services">Services</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
         <div class="dd-menu">
           <a href="korporativ.html" data-acc="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21h16M6 21V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v16M9 8h2m2 0h2M9 12h2m2 0h2M10 21v-4h4v4"/></svg><span data-i18n="service1_title">Corporate Law</span></a>
@@ -75,25 +75,25 @@ img{height:auto}.about-photo img{width:100%;height:auto;display:block}
     </ul>
     <div class="head-cta">
       <a class="head-tel" href="tel:+998771436888" aria-label="+998 77 143 68 88"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.7-1.9 1.1a12 12 0 0 0 5.5 5.5l1.1-1.9 3.7 1.5v3a1.6 1.6 0 0 1-1.8 1.6A16.5 16.5 0 0 1 5 5.3 1.6 1.6 0 0 1 6.6 3.5z"/></svg></a>
-      <div class="lang" role="group" aria-label="Til tanlash">
+      <div class="lang" role="group" aria-label="Choose language">
         <button type="button" data-lang="uz">UZ</button>
         <button type="button" data-lang="ru">RU</button>
         <button type="button" data-lang="en">EN</button>
       </div>
       <a class="head-phone" href="tel:+998771436888"><span data-i18n="ex_call">Call us</span>+998 77 143 68 88</a>
-      <button class="burger" id="burger" aria-label="Menyu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </div>
 </header>
 
 <div class="drawer" id="drawer">
   <div class="drawer-top">
-    <a class="brand" href="index.html"><img loading="lazy" decoding="async" src="../assets/img/logo.png" alt="VeroLex Advisory"><span><b>VeroLex</b><small>Advisory</small></span></a>
-    <button class="burger" id="drawerClose" aria-label="Yopish"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <a class="brand" href="./"><img loading="lazy" decoding="async" src="../assets/img/logo.png" alt="VeroLex Advisory"><span><b>VeroLex</b><small>Advisory</small></span></a>
+    <button class="burger" id="drawerClose" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
   <ul class="nav-m">
-    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
-    <li id="mServices"><a href="#"><span data-i18n="nav_services">Services</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+    <li><a href="./" data-i18n="nav_home">Home</a></li>
+    <li id="mServices"><a href="./#xizmatlar" role="button" aria-expanded="false"><span data-i18n="nav_services">Services</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
       <ul class="sub">
         <a href="korporativ.html" data-acc="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21h16M6 21V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v16M9 8h2m2 0h2M9 12h2m2 0h2M10 21v-4h4v4"/></svg><span data-i18n="service1_title">Corporate Law</span></a>
           <a href="mehnat-huquqi.html" data-acc="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5M16 5.5a3.2 3.2 0 0 1 0 5.4M18 15.3c1.5.8 2.3 2.4 2.6 4.7"/></svg><span data-i18n="service2_title">Labor Law</span></a>
@@ -123,7 +123,7 @@ img{height:auto}.about-photo img{width:100%;height:auto;display:block}
 <section class="page-hero">
   <div class="hero-grid"></div>
   <div class="container">
-    <nav class="crumb hr-seq d1"><a href="index.html" data-i18n="nav_home">Home</a><i>/</i><span data-i18n="nav_services">Services</span><i>/</i><span data-i18n="service_out_title">Legal Outsourcing</span></nav>
+    <nav class="crumb hr-seq d1"><a href="./" data-i18n="nav_home">Home</a><i>/</i><span data-i18n="nav_services">Services</span><i>/</i><span data-i18n="service_out_title">Legal Outsourcing</span></nav>
     <h1 class="hr-seq d2" data-i18n="out:out_title">Legal Outsourcing</h1>
     <p class="lede hr-seq d3" data-i18n="out:out_desc">Professional and ongoing legal support for your business</p>
   </div>
@@ -168,7 +168,7 @@ img{height:auto}.about-photo img{width:100%;height:auto;display:block}
         <p data-i18n="out:srv6_d">Analysis of existing company documentation and elimination of identified deficiencies.</p>
       </div></div>
       <div class="vl-note reveal">
-        <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7.5 21h9M4 7h16M6 7l-3 6a3 3 0 0 0 6 0L6 7M18 7l-3 6a3 3 0 0 0 6 0l-3-6"/></svg><span data-i18n="ex_note_t">Legal basis</span></h4>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7.5 21h9M4 7h16M6 7l-3 6a3 3 0 0 0 6 0L6 7M18 7l-3 6a3 3 0 0 0 6 0l-3-6"/></svg><span data-i18n="ex_note_t">Legal basis</span></h3>
         <p data-i18n="out:note_d">The service is formalised by contract under the Civil Code provisions on paid services. Court representation is carried out in accordance with the Civil, Economic and Administrative Procedure Codes.</p>
       </div>
     </div>
@@ -193,7 +193,7 @@ img{height:auto}.about-photo img{width:100%;height:auto;display:block}
       <h2 data-i18n="ex_steps_t">How We Work</h2>
       <p data-i18n="ex_steps_d">Four stages of clear and transparent cooperation</p>
     </div>
-    <div class="vl-steps reveal"><div class="vl-step"><span class="n">I</span><h4 data-i18n="out:step1_t">Legal Audit</h4><p data-i18n="out:step1_d">Existing contracts, internal documents and risks are reviewed in full at the outset.</p></div><div class="vl-step"><span class="n">II</span><h4 data-i18n="out:step2_t">Contract and Tariff</h4><p data-i18n="out:step2_d">A monthly tariff matching the workload is selected and the service agreement is signed.</p></div><div class="vl-step"><span class="n">III</span><h4 data-i18n="out:step3_t">Day-to-Day Support</h4><p data-i18n="out:step3_d">Prompt legal support is provided on contracts, orders and enquiries.</p></div><div class="vl-step"><span class="n">IV</span><h4 data-i18n="out:step4_t">Reporting and Improvement</h4><p data-i18n="out:step4_d">A report on the work performed is provided along with proposals to reduce risks.</p></div></div>
+    <div class="vl-steps reveal"><div class="vl-step"><span class="n">I</span><h3 data-i18n="out:step1_t">Legal Audit</h3><p data-i18n="out:step1_d">Existing contracts, internal documents and risks are reviewed in full at the outset.</p></div><div class="vl-step"><span class="n">II</span><h3 data-i18n="out:step2_t">Contract and Tariff</h3><p data-i18n="out:step2_d">A monthly tariff matching the workload is selected and the service agreement is signed.</p></div><div class="vl-step"><span class="n">III</span><h3 data-i18n="out:step3_t">Day-to-Day Support</h3><p data-i18n="out:step3_d">Prompt legal support is provided on contracts, orders and enquiries.</p></div><div class="vl-step"><span class="n">IV</span><h3 data-i18n="out:step4_t">Reporting and Improvement</h3><p data-i18n="out:step4_d">A report on the work performed is provided along with proposals to reduce risks.</p></div></div>
   </div>
 </section>
 
@@ -238,12 +238,12 @@ img{height:auto}.about-photo img{width:100%;height:auto;display:block}
     <div class="f-cols">
       <div class="f-brand">
         <img loading="lazy" decoding="async" src="../assets/img/logo.png" alt="VeroLex Advisory">
-        <h4 class="serif" style="color:var(--white);font-size:24px">VeroLex Advisory</h4>
+        <p class="serif f-name" style="color:var(--white);font-size:24px;margin:0">VeroLex Advisory</p>
         <p data-i18n="footer_desc">Our law firm provides quality services to meet all the legal needs of our clients.</p>
         <div class="socials"><a href="https://t.me/verolex_advisory" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3L3 10.5l6.5 2.5L12 20l3-5.5L21 3zM9.5 13L21 3"/></svg></a><a href="https://www.instagram.com/verolex_advisory" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/people/Vero-Lex/pfbid033YxedsfWztc8k4s4NmjkSHvmtgKF6n9E5erc5rusdJEDnRyjwFF4iWY59Xh6nsArl/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 2.5h-2.7a4.8 4.8 0 0 0-4.8 4.8v2.6H7.5v3.4h2.5v8.2h3.4v-8.2h2.6l.5-3.4h-3.1V7.7c0-.7.4-1.1 1.1-1.1h2z"/></svg></a><a href="https://www.youtube.com/@VeroLexAdvisory" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.9C18.2 4.9 12 4.9 12 4.9s-6.2 0-7.8.4A2.6 2.6 0 0 0 2.4 7.2 27 27 0 0 0 2 12a27 27 0 0 0 .4 4.8 2.6 2.6 0 0 0 1.8 1.9c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.9A27 27 0 0 0 22 12a27 27 0 0 0-.4-4.8z"/><path d="M10.1 15l5-3-5-3z"/></svg></a><a href="https://www.linkedin.com/in/vero-lex-937a04383/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16.2 8.4a5.4 5.4 0 0 1 5.4 5.4v6.7h-3.5v-6.7a1.9 1.9 0 0 0-3.8 0v6.7h-3.5v-6.7a5.4 5.4 0 0 1 5.4-5.4z"/><rect x="2.6" y="9.1" width="3.5" height="11.4" rx="1"/><circle cx="4.35" cy="4.6" r="2"/></svg></a><a href="mailto:verolexadvisory@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a></div>
       </div>
       <div class="f-col">
-        <h4 data-i18n="services_footer">Services</h4>
+        <h3 data-i18n="services_footer">Services</h3>
         <ul>
         <li><a href="korporativ.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg><span data-i18n="service1_title">Corporate Law</span></a></li>
         <li><a href="mehnat-huquqi.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg><span data-i18n="service2_title">Labor Law</span></a></li>
@@ -255,16 +255,16 @@ img{height:auto}.about-photo img{width:100%;height:auto;display:block}
         </ul>
       </div>
       <div class="f-col">
-        <h4 data-i18n="links_footer">Useful Links</h4>
+        <h3 data-i18n="links_footer">Useful Links</h3>
         <ul>
-          <li><a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg><span data-i18n="nav_home">Home</span></a></li>
+          <li><a href="./"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg><span data-i18n="nav_home">Home</span></a></li>
           <li><a href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg><span data-i18n="about_footer">About Us</span></a></li>
           <li><a href="blog.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg><span data-i18n="blog_footer">Blog</span></a></li>
           <li><a href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg><span data-i18n="contact_footer">Contact</span></a></li>
         </ul>
       </div>
       <div class="f-col">
-        <h4 data-i18n="contact_footer">Contact</h4>
+        <h3 data-i18n="contact_footer">Contact</h3>
         <ul>
           <li><a href="https://www.google.com/maps/place/%22Vero+Lex%22%D1%8E%D1%80%D0%B8%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F+%D0%BA%D0%BE%D0%BD%D1%81%D0%B0%D0%BB%D1%82%D0%B8%D0%BD%D0%B3%D0%BE%D0%B2%D0%B0%D1%8F+%D0%BA%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D1%8F/@41.3213243,69.2777646,748m/data=!3m2!1e3!4b1!4m6!3m5!1s0x38ae8b705124647d:0xd21cdf1621a4b48a!8m2!3d41.3213243!4d69.2777646!16s%2Fg%2F11xzcyl16m" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span data-i18n="contact_address">Tashkent, Yunusabad district, Center 4, Abdulla Qodiriy street 28A</span></a></li>
           <li><a href="tel:+998771436888"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>+998 77 143 68 88</span></a></li>
@@ -279,9 +279,9 @@ img{height:auto}.about-photo img{width:100%;height:auto;display:block}
     </div>
   </div>
 </footer>
-<script src="../assets/js/analytics.js?v=8"></script>
-<script src="../assets/js/i18n.js?v=8"></script>
-<script src="../assets/js/main.js?v=8"></script>
-<script src="../assets/js/vl-extra.js?v=8"></script>
+<script src="../assets/js/analytics.js?v=9"></script>
+<script src="../assets/js/i18n.js?v=9"></script>
+<script src="../assets/js/main.js?v=9"></script>
+<script src="../assets/js/vl-extra.js?v=9"></script>
 </body>
 </html>

@@ -19,11 +19,13 @@
 (function () {
   "use strict";
 
-  var GA4_ID    = "G-XXXXXXXXXX";        // <-- toʻldiring
+  var GA4_ID    = "G-N4Z7XF5GGK";        // production'dagi ID (2026-10-01 auditida ko'rilgan) — GA4 hisobida tasdiqlang
   var ADS_ID    = "AW-17593861057";
   var ADS_LABEL = "";                    // <-- ixtiyoriy
 
-  var hasGA4 = GA4_ID.indexOf("G-") === 0 && GA4_ID.indexOf("X") === -1;
+  /* Faqat namunaviy "G-XXXXXXXXXX" yoki bo'sh qiymat rad etiladi.
+     DIQQAT: bu yerda ID ni o'zi bilan solishtirmang (2026-10 auditidagi xato). */
+  var hasGA4 = /^G-[A-Z0-9]{6,}$/.test(GA4_ID) && !/^G-X+$/.test(GA4_ID);
   var hasAds = ADS_ID.indexOf("AW-") === 0;
   if (!hasGA4 && !hasAds) return;
 

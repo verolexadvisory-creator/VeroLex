@@ -3,6 +3,38 @@
 Toshkentdagi yuridik konsalting firmasi uchun 3 tilli (oʻzbek / rus / ingliz) sayt.
 Har bir til **alohida manzilda** joylashgan — bu Google va Yandex uchun muhim.
 
+## 0. 2026-10 takomillashtirish (audit natijalari bo'yicha)
+
+Matnlar, dizayn va URLlar o'zgarmadi. Faqat audit (`VEROLEX_BACKLOG.md`) da topilgan nuqsonlar tuzatildi.
+
+| # | O'zgarish | Fayllar | Audit bandi |
+|---|---|---|---|
+| 1 | GA4 yoqilish sharti xavfsiz qilindi va `G-N4Z7XF5GGK` kiritildi (ID production'dan olingan; GA4 hisobida tasdiqlang) | `assets/js/analytics.js` | B-01 |
+| 2 | Forma: label'lar inputlarga `for`/`id` bilan bog'landi; `autocomplete` qo'shildi | 6 sahifa (bosh, aloqa × 3 til) | B-05 |
+| 3 | Forma: brauzerda ism, telefon (9–15 raqam) va email tekshiruvi; maydon ostida 3 tilli xato matni; server xato kodiga mos xabar (`validation`, `rate`); takroriy yuborishdan himoya | `assets/js/main.js`, `assets/js/i18n.js`, `assets/css/vl-extra.css` | B-04 |
+| 4 | `send.php`: telefon qoidasi brauzer bilan bir xil (9–15 raqam) | `send.php` | B-04 |
+| 5 | Bosh sahifa havolalari `index.html` o'rniga `./` (canonical bilan bir xil); til tugmasi `/ru/`, `/en/` ga o'tadi; `.htaccess` da `index.html` → katalog 301 | 39 sahifa, `main.js`, `.htaccess` | B-08, REC-006 |
+| 6 | Mobil menyu: `aria-expanded`/`aria-controls`, ochilganda fokus menyuga, yopilganda tugmaga qaytadi; "Xizmatlar" pastki menyusi ham | 39 sahifa, `main.js` | B-14 |
+| 7 | FAQ: `aria-expanded`/`aria-controls` | `main.js` | B-14 |
+| 8 | Desktop "Xizmatlar" menyusi klaviatura bilan ochiladi; ota-band bosh sahifadagi xizmatlar bo'limiga olib boradi (`href="#"` o'rniga) | 39 sahifa, `vl-extra.css` | LC-09 |
+| 9 | Klaviatura fokusi har qanday fonda ko'rinadi (ikki qavatli halqa) | `vl-extra.css` | TZ-044 |
+| 10 | RU/EN sahifalarda o'zbekcha qolgan `aria-label` lar tarjima qilindi | 26 sahifa | B-13 |
+| 11 | Sarlavha ierarxiyasi: `h4` → `h3`, aloqa sahifasida `h3` → `h2`; ko'rinish CSS orqali saqlandi | 39 sahifa, CSS | B-25 |
+| 12 | Bosh sahifadagi 2,9 soniyalik intro animatsiya olib tashlandi | 3 bosh sahifa | B-30 |
+| 13 | Alohida 3 tilli 404 sahifasi (`noindex`) | `404.html`, `.htaccess` | B-31 |
+| 14 | `diagnostika.php` olib tashlandi va `.htaccess` da yopildi; `robots.txt` maxfiy yo'llarni sanamaydi | `.htaccess`, `robots.txt` | B-29 |
+| 15 | Kesh versiyasi `?v=8` → `?v=9` | 39 sahifa | — |
+
+**Joylashdan oldin (majburiy):**
+1. BotFather'da Telegram bot tokenini almashtiring (Revoke) va yangisini faqat serverdagi `.env` ga yozing. `.env` ni hech kimga yubormang.
+2. Serverdagi eski `diagnostika.php` ni o'chiring.
+3. Barcha fayllarni `public_html` ga yuklang (`.htaccess` va `404.html` ham).
+4. GA4 DebugView'da `page_view` kelayotganini va forma yuborilganda `generate_lead` hodisasi kelishini tekshiring.
+
+**Hali qilinmagan (qaror yoki kontent kerak):** maxfiylik siyosati va cookie xabarnomasi (yurist matni), email bo'yicha yakuniy qaror (hozir hamma joyda `verolexadvisory@gmail.com`), "24/7" va "100%" da'volarini tasdiqlash, Yandex Metrika (ID kerak), yangi dizayn hamda Jamoa, Hamkorlar, Vakansiyalar bo'limlari va admin panel (`VEROLEX_REDESIGN_TZ.md`).
+
+---
+
 ## Tarkibi
 
 ```
@@ -10,7 +42,7 @@ index.html … it-park.html        13 ta oʻzbekcha sahifa (asosiy)
 ru/                              13 ta ruscha sahifa
 en/                              13 ta inglizcha sahifa
 send.php                         Forma backendi (Telegram + ixtiyoriy Google Sheets)
-diagnostika.php                  Sozlamalarni tekshirish (ishlatgach OʻCHIRING)
+404.html                         3 tilli "sahifa topilmadi" sahifasi
 .htaccess                        HTTPS, xavfsizlik, siqish, kesh
 .env.example                     Maxfiy sozlamalar namunasi
 robots.txt, sitemap.xml          SEO
@@ -57,9 +89,7 @@ avtomatik tekshiradi.
 > **Diqqat:** tokenni hech kimga yubormang va git repozitoriyga qoʻshmang.
 
 ### Tekshirish
-`https://verolex.uz/diagnostika.php?run=1` manzilini oching — sozlamalar holati koʻrinadi.
-Sinov xabari yuborish uchun `&send=1` qoʻshing.
-**Tekshiruv tugagach `diagnostika.php` ni serverdan oʻchiring.**
+`diagnostika.php` xavfsizlik sababli paketdan olib tashlandi: u parolsiz ishlardi va sinov xabarini istalgan kishi yubora olardi. `.htaccess` bu faylni serverda qolib ketgan bo'lsa ham yopadi. Forma ishlashini tekshirish uchun saytdagi formani bir marta to'ldiring va xabar Telegramga kelganini ko'ring.
 
 ### Xatolik kodlari
 

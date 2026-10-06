@@ -94,9 +94,9 @@
 .vl-note:hover{box-shadow:var(--shadow)}
 .vl-note::after{content:"§";position:absolute;right:22px;bottom:-18px;font-family:var(--ff-d);font-style:italic;
   font-size:88px;line-height:1;color:transparent;-webkit-text-stroke:1px var(--acc-dim);opacity:.35;pointer-events:none}
-.vl-note h4{display:flex;align-items:center;gap:10px;font-family:var(--ff-d);font-size:19px;font-weight:600;
+.vl-note h3,.vl-note h4{display:flex;align-items:center;gap:10px;font-family:var(--ff-d);font-size:19px;font-weight:600;
   color:var(--ink);margin-bottom:9px}
-.vl-note h4 svg{width:18px;height:18px;color:var(--acc);flex:none}
+.vl-note h3 svg,.vl-note h4 svg{width:18px;height:18px;color:var(--acc);flex:none}
 .vl-note p{position:relative;font-size:14.5px;color:var(--muted)}
 
 /* ------------------------------------------------------------
@@ -118,7 +118,7 @@
 .vl-steps.in .vl-step:nth-child(3) .n::after{animation-delay:1s}
 .vl-steps.in .vl-step:nth-child(4) .n::after{animation-delay:1.5s}
 .vl-step:hover .n{background:var(--acc);border-color:var(--acc);color:var(--white);transform:translateY(-5px) scale(1.06)}
-.vl-step h4{font-family:var(--ff-d);font-size:19px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.vl-step h3,.vl-step h4{font-family:var(--ff-d);font-size:19px;font-weight:600;color:var(--ink);margin-bottom:8px}
 .vl-step p{font-size:14px;color:var(--muted)}
 
 /* ------------------------------------------------------------
@@ -181,7 +181,7 @@ img{height:auto}
 }
 @media (max-width:1200px){
   .vl-steps{gap:18px}
-  .vl-step h4{font-size:18px}
+  .vl-step h3,.vl-step h4{font-size:18px}
 }
 @media (max-width:1080px){
   .vl-steps{grid-template-columns:1fr 1fr;gap:34px 24px}
@@ -205,7 +205,7 @@ img{height:auto}
   .vl-steps{grid-template-columns:1fr;gap:28px}
   .vl-step{display:grid;grid-template-columns:53px 1fr;gap:0 16px;text-align:left;align-items:start}
   .vl-step .n{margin:0}
-  .vl-step h4{grid-column:2;margin-bottom:5px}
+  .vl-step h3,.vl-step h4{grid-column:2;margin-bottom:5px}
   .vl-step p{grid-column:2}
 }
 @media (max-width:380px){
@@ -312,3 +312,19 @@ img{height:auto}
 @media (max-width:300px){
   .brand span{display:none}
 }
+
+/* ===== 2026-10 takomillashtirish (audit B-05, B-13, B-14, LC-07) ===== */
+/* h4 -> h3 almashtirilgani uchun avvalgi qator balandligini saqlash */
+.f-col h3,.vl-note h3,.vl-step h3{line-height:inherit}
+.c-info h2,.c-form h2{line-height:1.12;margin-top:0}
+/* Klaviatura fokusi aniq ko'rinsin */
+/* ikki qavatli halqa: och fonda to'q ko'k, to'q fonda oltin chiziq ko'rinadi */
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 4px var(--brass);border-radius:4px}
+.f-field input:focus-visible,.f-field textarea:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+/* Maydon darajasidagi xato */
+.f-field input[aria-invalid="true"],.f-field textarea[aria-invalid="true"]{border-color:#B42318}
+.f-err{display:block;margin-top:6px;font-size:13px;line-height:1.4;color:#B42318}
+.f-status.err{color:#B42318}
+/* "Xizmatlar" ochiladigan menyusi klaviatura bilan ham ochiladi */
+.dd:focus-within .dd-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.dd:focus-within .chev{transform:rotate(180deg)}

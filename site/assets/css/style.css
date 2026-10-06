@@ -190,7 +190,7 @@ h1,h2,h3,.serif{font-family:var(--ff-d);font-weight:600;color:var(--ink);line-he
 .contact-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;align-items:start}
 .c-info{background:var(--ink);color:var(--muted-d);border-radius:var(--r);padding:38px 34px;position:relative;overflow:hidden}
 .c-info::after{content:"§";position:absolute;bottom:-50px;right:-10px;font-family:var(--ff-d);font-size:220px;font-style:italic;color:transparent;-webkit-text-stroke:1px var(--line-d);line-height:1}
-.c-info h3{color:var(--white);font-size:28px;margin-bottom:26px}
+.c-info h2,.c-info h3{color:var(--white);font-size:28px;margin-bottom:26px}
 .c-row{display:flex;gap:16px;margin-bottom:22px;position:relative;z-index:1}
 .c-row svg{width:21px;height:21px;color:var(--brass);flex:none;margin-top:3px}
 .c-row b{display:block;color:var(--white);font-size:14px;margin-bottom:2px}
@@ -201,7 +201,7 @@ h1,h2,h3,.serif{font-family:var(--ff-d);font-weight:600;color:var(--ink);line-he
 .socials a:hover{background:var(--brass);color:var(--ink);border-color:var(--brass)}
 .socials svg{width:19px;height:19px}
 .c-form{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:38px 34px}
-.c-form h3{font-size:28px;margin-bottom:8px}
+.c-form h2,.c-form h3{font-size:28px;margin-bottom:8px}
 .c-form .hint{color:var(--muted);font-size:14px;margin-bottom:24px}
 .f-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .f-field{display:flex;flex-direction:column;gap:7px}
@@ -269,7 +269,7 @@ h1,h2,h3,.serif{font-family:var(--ff-d);font-weight:600;color:var(--ink);line-he
 .f-cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.1fr;gap:44px;padding-bottom:54px}
 .f-brand img{width:54px;margin-bottom:16px}
 .f-brand p{font-size:14px;max-width:300px;margin:10px 0 20px}
-.f-col h4{color:var(--white);font-family:var(--ff-d);font-size:20px;margin-bottom:18px}
+.f-col h3,.f-col h4{color:var(--white);font-family:var(--ff-d);font-size:20px;margin-bottom:18px}
 .f-col li{margin-bottom:11px}
 .f-col a{font-size:14.5px;color:var(--muted-d);transition:.25s;display:inline-flex;gap:8px;align-items:flex-start}
 .f-col a:hover{color:var(--brass-2)}

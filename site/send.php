@@ -99,7 +99,8 @@ if (trim((string)($input['website'] ?? '')) !== '') vl_out(true);
 
 /* ---------- 3. Maydonlarni tasdiqlash ---------- */
 if (vl_len($name) < 2) vl_out(false, 'validation');
-if (preg_match_all('/\d/u', $phone) < 7) vl_out(false, 'validation');
+$digits = preg_match_all('/\d/u', $phone);
+if ($digits < 9 || $digits > 15) vl_out(false, 'validation'); /* frontend bilan bir xil: 9–15 raqam */
 if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) vl_out(false, 'validation');
 
 /* ---------- 4. Oddiy tezlik cheklovi (daqiqasiga 5 ta murojaat) ---------- */

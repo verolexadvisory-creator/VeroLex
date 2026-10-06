@@ -2,16 +2,11 @@ User-agent: *
 Allow: /
 
 # Tizim fayllari
-Disallow: /.env
 Disallow: /send.php
-Disallow: /diagnostika.php
-Disallow: /build.zip
 Disallow: /contact-handler.php
 
 User-agent: Yandex
 Allow: /
-Disallow: /.env
 Disallow: /send.php
-Disallow: /diagnostika.php
 
 Sitemap: https://verolex.uz/sitemap.xml
