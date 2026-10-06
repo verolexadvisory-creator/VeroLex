@@ -1,0 +1,73 @@
+# ============================================================
+# VeroLex Advisory — Apache sozlamalari
+# Yagona manzil, xavfsizlik, siqish va keshlash (SEO va tezlik uchun)
+# ============================================================
+
+# ---------- 1. Maxfiy fayllarni yopish ----------
+<FilesMatch "^\.env|^\.git|composer\.(json|lock)$|\.log$">
+  Require all denied
+</FilesMatch>
+
+# ---------- 2. Yagona manzil: HTTPS va www siz ----------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # HTTPS ga yoʻnaltirish
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # www.verolex.uz -> verolex.uz
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+</IfModule>
+
+# ---------- 2b. Eski manzillardan 301 yoʻnaltirish (SEO saqlanishi uchun) ----------
+<IfModule mod_rewrite.c>
+  # Olib tashlangan "Ekologiya huquqi" sahifasi
+  RewriteRule ^ekologiya-huquqi\.html$    /                 [R=301,L]
+  RewriteRule ^ekologiya_huquqi\.html$    /                 [R=301,L]
+  RewriteRule ^ru/ekologiya-huquqi\.html$ /ru/index.html    [R=301,L]
+  RewriteRule ^en/ekologiya-huquqi\.html$ /en/index.html    [R=301,L]
+
+  # Pastki chiziqli eski nomlar -> defisli yangi nomlar
+  RewriteRule ^(ru/|en/)?mehnat_huquqi\.html$              /$1mehnat-huquqi.html              [R=301,L]
+  RewriteRule ^(ru/|en/)?litsenziya_va_ruxsatnomalar\.html$ /$1litsenziya-va-ruxsatnomalar.html [R=301,L]
+
+  # Eski forma backendi -> yangisi
+  RewriteRule ^contact-handler\.php$ /send.php [R=301,L]
+</IfModule>
+
+# ---------- 3. Xavfsizlik sarlavhalari ----------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ---------- 4. Siqish ----------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css \
+    application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# ---------- 5. Brauzer keshi ----------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # CSS va JS — havolalarda ?v= versiyasi bor, shu bois uzoq kesh xavfsiz.
+  # Ammo versiyani oshirish unutilsa oʻzi tiklanishi uchun 7 kun qilingan.
+  ExpiresByType text/css                "access plus 7 days"
+  ExpiresByType application/javascript  "access plus 7 days"
+  ExpiresByType image/png               "access plus 1 year"
+  ExpiresByType image/jpeg              "access plus 1 year"
+  ExpiresByType image/webp              "access plus 1 year"
+  ExpiresByType image/svg+xml           "access plus 1 year"
+  ExpiresByType text/html               "access plus 1 hour"
+</IfModule>
+
+# ---------- 6. Kodlash ----------
+AddDefaultCharset UTF-8
+
+# ---------- 7. Xatolik sahifasi ----------
+ErrorDocument 404 /index.html
