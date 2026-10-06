@@ -352,4 +352,58 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://verolex.uz/careers.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://verolex.uz/careers.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verolex.uz/ru/careers.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verolex.uz/en/careers.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://verolex.uz/careers.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://verolex.uz/ru/careers.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://verolex.uz/careers.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verolex.uz/ru/careers.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verolex.uz/en/careers.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://verolex.uz/careers.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://verolex.uz/en/careers.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://verolex.uz/careers.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verolex.uz/ru/careers.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verolex.uz/en/careers.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://verolex.uz/careers.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://verolex.uz/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://verolex.uz/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verolex.uz/ru/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verolex.uz/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://verolex.uz/privacy.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://verolex.uz/ru/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://verolex.uz/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verolex.uz/ru/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verolex.uz/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://verolex.uz/privacy.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://verolex.uz/en/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://verolex.uz/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verolex.uz/ru/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verolex.uz/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://verolex.uz/privacy.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>

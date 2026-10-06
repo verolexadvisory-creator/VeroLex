@@ -34,6 +34,70 @@
   function gtag() { window.dataLayer.push(arguments); }
   window.gtag = window.gtag || gtag;
 
+  /* ---------- Cookie roziligi (Google Consent Mode v2) ----------
+     Rozilik berilmaguncha analitika va reklama cookie'lari ishlatilmaydi.
+     Tanlov localStorage'da "vl_consent" kalitida saqlanadi: "granted" | "denied". */
+  var CONSENT_KEY = "vl_consent";
+  function readConsent() { try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; } }
+  function consentState(v) {
+    var g = v === "granted" ? "granted" : "denied";
+    return { ad_storage: g, ad_user_data: g, ad_personalization: g, analytics_storage: g };
+  }
+  var stored = readConsent();
+  var defaults = consentState(stored);
+  defaults.wait_for_update = 500;
+  gtag("consent", "default", defaults);
+
+  var CONSENT_TEXT = {
+    uz: { msg: "Sayt tashriflar statistikasini yuritish uchun cookie fayllardan foydalanadi (Google Analytics, Google Ads). Batafsil:", link: "maxfiylik siyosati", ok: "Qabul qilish", no: "Rad etish" },
+    ru: { msg: "Сайт использует cookie для статистики посещений (Google Analytics, Google Ads). Подробнее:", link: "политика конфиденциальности", ok: "Принять", no: "Отклонить" },
+    en: { msg: "This website uses cookies to measure visits (Google Analytics, Google Ads). Learn more:", link: "Privacy Policy", ok: "Accept", no: "Decline" }
+  };
+  function saveConsent(v) {
+    try { localStorage.setItem(CONSENT_KEY, v); } catch (e) {}
+    gtag("consent", "update", consentState(v));
+  }
+  function showConsentBanner() {
+    if (document.getElementById("vlConsent")) return;
+    var lang = document.documentElement.getAttribute("lang") || "uz";
+    var t = CONSENT_TEXT[lang] || CONSENT_TEXT.uz;
+    var root = document.documentElement.getAttribute("data-root") || "";
+    var box = document.createElement("div");
+    box.className = "vl-consent";
+    box.id = "vlConsent";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie");
+    var p = document.createElement("p");
+    p.appendChild(document.createTextNode(t.msg + " "));
+    var a = document.createElement("a");
+    a.href = root + (lang === "uz" ? "" : lang + "/") + "privacy.html";
+    a.textContent = t.link;
+    p.appendChild(a);
+    p.appendChild(document.createTextNode("."));
+    var btns = document.createElement("div");
+    btns.className = "vl-consent-btns";
+    function mk(label, cls, value) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = cls; b.textContent = label;
+      b.addEventListener("click", function () { saveConsent(value); box.remove(); });
+      return b;
+    }
+    btns.appendChild(mk(t.no, "vl-decline", "denied"));
+    btns.appendChild(mk(t.ok, "vl-accept", "granted"));
+    box.appendChild(p);
+    box.appendChild(btns);
+    document.body.appendChild(box);
+  }
+  function initConsentUi() {
+    if (!stored) showConsentBanner();
+    /* maxfiylik sahifasidagi "Cookie sozlamalari" tugmasi */
+    document.querySelectorAll("[data-consent-open]").forEach(function (b) {
+      b.addEventListener("click", showConsentBanner);
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initConsentUi);
+  else initConsentUi();
+
   var s = document.createElement("script");
   s.async = true;
   s.src = "https://www.googletagmanager.com/gtag/js?id=" + (hasGA4 ? GA4_ID : ADS_ID);

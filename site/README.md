@@ -24,6 +24,11 @@ Matnlar, dizayn va URLlar o'zgarmadi. Faqat audit (`VEROLEX_BACKLOG.md`) da topi
 | 13 | Alohida 3 tilli 404 sahifasi (`noindex`) | `404.html`, `.htaccess` | B-31 |
 | 14 | `diagnostika.php` olib tashlandi va `.htaccess` da yopildi; `robots.txt` maxfiy yo'llarni sanamaydi | `.htaccess`, `robots.txt` | B-29 |
 | 15 | Kesh versiyasi `?v=8` → `?v=9` | 39 sahifa | — |
+| 16 | **Maxfiylik siyosati** sahifasi (3 tilda): qanday ma'lumot to'planadi, maqsad, kimga uzatiladi (Telegram, Google — rozilik bilan), saqlash, huquqlar, cookie. Footerda va har forma ostida havola | `privacy.html`, `ru/`, `en/` | B-07 |
+| 17 | **Cookie banneri** (Google Consent Mode v2): rozilik berilmaguncha analitika va reklama cookie'lari yozilmaydi; tanlov maxfiylik sahifasidan o'zgartiriladi | `assets/js/analytics.js`, CSS | B-07 |
+| 18 | **"Vakansiyalar"** menyuda (barcha sahifalarda) va alohida sahifa (3 tilda): ochiq vakansiya yo'q holati, rezyume email orqali | `careers.html`, `ru/`, `en/`, 45 sahifa | NEW-009 |
+| 19 | Header o'rta kengliklarda (1081–1340 px) bir qatorda qoladi; menyu yozuvlari bo'linmaydi | `vl-extra.css` | NEW-007 |
+| 20 | `sitemap.xml` — 45 URL (yangi 6 sahifa hreflang bilan) | `sitemap.xml` | — |
 
 **Joylashdan oldin (majburiy):**
 1. BotFather'da Telegram bot tokenini almashtiring (Revoke) va yangisini faqat serverdagi `.env` ga yozing. `.env` ni hech kimga yubormang.
@@ -31,7 +36,13 @@ Matnlar, dizayn va URLlar o'zgarmadi. Faqat audit (`VEROLEX_BACKLOG.md`) da topi
 3. Barcha fayllarni `public_html` ga yuklang (`.htaccess` va `404.html` ham).
 4. GA4 DebugView'da `page_view` kelayotganini va forma yuborilganda `generate_lead` hodisasi kelishini tekshiring.
 
-**Hali qilinmagan (qaror yoki kontent kerak):** maxfiylik siyosati va cookie xabarnomasi (yurist matni), email bo'yicha yakuniy qaror (hozir hamma joyda `verolexadvisory@gmail.com`), "24/7" va "100%" da'volarini tasdiqlash, Yandex Metrika (ID kerak), yangi dizayn hamda Jamoa, Hamkorlar, Vakansiyalar bo'limlari va admin panel (`VEROLEX_REDESIGN_TZ.md`).
+**Hali qilinmagan — sizdan ma'lumot kerak:**
+- *Jamoa sahifasi:* har xodimning to'liq ismi, lavozimi, mutaxassisligi, portreti va nashrga roziligi (`VEROLEX_CONTENT_CHECKLIST.md` §2).
+- *Hamkorlar sahifasi:* kompaniya nomlari, mamlakati, mijoz/hamkor turi, holati va logoni ko'rsatishga ruxsat (§4).
+- *Vakansiyalar:* ochiq vakansiya paydo bo'lsa — matni (§3). Sahifa tayyor, faqat e'lon qo'shiladi.
+- *Yandex Metrika:* hisoblagich raqami (Yandex Metrika kabinetida yaratiladi).
+- *Maxfiylik siyosati:* matn saytning haqiqiy ishlashi asosida yozildi. Yuristingiz bir marta o'qib tasdiqlashi tavsiya etiladi.
+- *Admin panel va yangi dizayn:* `VEROLEX_REDESIGN_TZ.md` bo'yicha alohida bosqich.
 
 ---
 
