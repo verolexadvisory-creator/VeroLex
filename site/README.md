@@ -3,6 +3,25 @@
 Toshkentdagi yuridik konsalting firmasi uchun 3 tilli (oʻzbek / rus / ingliz) sayt.
 Har bir til **alohida manzilda** joylashgan — bu Google va Yandex uchun muhim.
 
+## 00. Korporativ dizayn va yangi bo'limlar (2026-10, v10)
+
+| # | O'zgarish |
+|---|---|
+| 1 | Yangi uslub qatlami `assets/css/vl-corporate.css`: vazmin to'q ko'k + iliq och fon, cheklangan oltin aksent, to'g'ri burchaklar; 9 xizmat uchun alohida ranglar o'rniga yagona aksent; harakatlanuvchi lenta va katta dekorativ belgilar olib tashlandi |
+| 2 | Shriftlar: sarlavhalar uchun Source Serif 4 (vazmin, kirill bilan), matn uchun Manrope |
+| 3 | Bosh sahifa: tarozi tasviri o'rniga jamoaning haqiqiy surati; SEO uchun H1 — "Toshkentda biznes uchun yuridik xizmatlar" (RU/EN mos) |
+| 4 | "Biz haqimizda": **Rahbariyat va jamoa** bo'limi (rahbar uchun katta karta, xodimlar uchun lavozim va mutaxassislik alohida ko'rinadigan kartalar) va **Biz bilan ishlayotgan va ishlagan kompaniyalar** bo'limi (bizga ishonch bildirgan kompaniyalar / hamkorlar, mahalliy / xorijiy, amaldagi / avvalgi). Bosh sahifada ham qisqa bloklar |
+| 5 | Email hamma joyda `info@verolex.uz`; LinkedIn — kompaniya sahifasi `https://www.linkedin.com/company/144922984/` |
+| 6 | SEO: Organization JSON-LD'ga `contactPoint`, `foundingDate`, LinkedIn; jamoa a'zolari uchun `Person` (ma'lumot kiritilganda); `sitemap.xml` da `lastmod` |
+| 7 | Kompyuterda faylni to'g'ridan-to'g'ri ochganda (`file://`) ham havolalar ishlaydi |
+
+### Jamoa va hamkorlarni qo'shish
+
+Ma'lumot repodagi `site-data/team.json` va `site-data/partners.json` fayllarida. To'ldirilgach, `python3 tools/build_site.py site` buyrug'i sahifalarni qayta yig'adi (bosh sahifa va "Biz haqimizda", 3 tilda).
+- Jamoa portretlari jamoa suratidan tayyorlangan: `assets/img/team/p1.webp`–`p4.webp` (`site-data/jamoa_portretlar_1-4.png` dagi 1–4 raqamlar).
+- Hamkor logolari `assets/img/partners/` papkasiga qo'yiladi; logo bo'lmasa kompaniya nomi ko'rsatiladi.
+- Ma'lumot kiritilmaguncha jamoa bo'limida umumiy jamoa surati, hamkorlar bo'limi esa umuman ko'rsatilmaydi (bo'sh blok chiqmaydi).
+
 ## 0. 2026-10 takomillashtirish (audit natijalari bo'yicha)
 
 Matnlar, dizayn va URLlar o'zgarmadi. Faqat audit (`VEROLEX_BACKLOG.md`) da topilgan nuqsonlar tuzatildi.
@@ -244,7 +263,7 @@ uchala tilni birdan qayta chiqarib beraman.
 ## 7. Aloqa maʼlumotlari
 
 - Telefon: +998 77 143 68 88
-- Email: verolexadvisory@gmail.com
+- Email: info@verolex.uz
 - Manzil: Toshkent, Yunusobod tumani, Markaz 4, Abdulla Qodiriy koʻchasi 28A
 - Geolokatsiya: 41.3213243, 69.2777646
 - Telegram kanali: https://t.me/verolex_advisory
@@ -252,4 +271,4 @@ uchala tilni birdan qayta chiqarib beraman.
 - Instagram: https://www.instagram.com/verolex_advisory
 - Facebook: https://www.facebook.com/people/Vero-Lex/
 - YouTube: https://www.youtube.com/@VeroLexAdvisory
-- LinkedIn: https://www.linkedin.com/in/vero-lex-937a04383/
+- LinkedIn: https://www.linkedin.com/company/144922984/

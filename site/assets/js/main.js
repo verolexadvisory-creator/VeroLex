@@ -41,10 +41,28 @@
       var file = (location.pathname.split("/").pop() || "");
       /* bosh sahifa canonical manzili katalog ("/", "/ru/") — index.html ga o'tmaymiz */
       if (file.indexOf(".html") === -1 || file === "index.html") file = "";
+      /* kompyuterda faylni to'g'ridan-to'g'ri ochganda (file://) papka emas, index.html kerak */
+      if (!file && location.protocol === "file:") file = "index.html";
       try { localStorage.setItem("vl_lang", to); } catch (e) {}
       location.href = (ROOT + (to === "uz" ? "" : to + "/") + file) || "./";
     });
   });
+
+  /* ============ LOKAL KO'RISH (file://) ============ */
+  /* Serverda "./" va "../ru/" kabi havolalar index.html ni ochadi; kompyuterda faylni
+     to'g'ridan-to'g'ri ochganda esa papka ro'yxati chiqadi. Faqat file:// da index.html qo'shamiz. */
+  if (location.protocol === "file:") {
+    document.querySelectorAll("a[href]").forEach(function (a) {
+      var h = a.getAttribute("href");
+      if (/^(https?:|mailto:|tel:|#)/i.test(h)) return;
+      var m = h.match(/^([^#?]*?)(\/?)([#?].*)?$/);
+      if (m && (m[1] === "." || m[1] === ".." || m[2] === "/" || m[1] === "")) {
+        var base = m[1] === "" ? "" : m[1].replace(/\/?$/, "/");
+        if (m[1] === "" && !m[3]) return;
+        a.setAttribute("href", base + "index.html" + (m[3] || ""));
+      }
+    });
+  }
 
   /* ============ HEADER ============ */
   var header = document.querySelector(".header");

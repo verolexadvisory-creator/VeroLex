@@ -1,0 +1,13 @@
+{
+  "_izoh": "Jamoa a'zolari. name va position (kamida uz tilida) to'ldirilib, published=true qilinsa saytda chiqadi. photo: assets/img/team/ ichidagi fayl. leader=true bo'lgan a'zo alohida katta kartada chiqadi. Rasmlar jamoa suratidan qirqilgan (1–4 raqamlar: jamoa_portretlar_1-4.png).",
+  "members": [
+    {"id": "p4", "photo": "assets/img/team/p4.webp", "leader": false, "order": 1, "published": false,
+     "name": {"uz": "", "ru": "", "en": ""}, "position": {"uz": "", "ru": "", "en": ""}, "specialization": {"uz": "", "ru": "", "en": ""}},
+    {"id": "p1", "photo": "assets/img/team/p1.webp", "leader": false, "order": 2, "published": false,
+     "name": {"uz": "", "ru": "", "en": ""}, "position": {"uz": "", "ru": "", "en": ""}, "specialization": {"uz": "", "ru": "", "en": ""}},
+    {"id": "p2", "photo": "assets/img/team/p2.webp", "leader": false, "order": 3, "published": false,
+     "name": {"uz": "", "ru": "", "en": ""}, "position": {"uz": "", "ru": "", "en": ""}, "specialization": {"uz": "", "ru": "", "en": ""}},
+    {"id": "p3", "photo": "assets/img/team/p3.webp", "leader": false, "order": 4, "published": false,
+     "name": {"uz": "", "ru": "", "en": ""}, "position": {"uz": "", "ru": "", "en": ""}, "specialization": {"uz": "", "ru": "", "en": ""}}
+  ]
+}
