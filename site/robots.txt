@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Tizim fayllari
+Disallow: /send.php
+Disallow: /contact-handler.php
+
+User-agent: Yandex
+Allow: /
+Disallow: /send.php
+
+Sitemap: https://verolex.uz/sitemap.xml
